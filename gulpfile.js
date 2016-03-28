@@ -44,6 +44,14 @@ gulp.task('run-dev', ['vet'], function() {
 		});
 });
 
+// gulp.task('test', function() {
+// 	$.env({var: {ENV:'Test'}});
+
+// 	return gulp
+// 		.src(config.testjs, {read: false})
+// 		.pipe($.mocha({reporter: 'nyan'}));
+// });
+
 
 ///////////////
 function log(msg) {

@@ -3,12 +3,14 @@ module.exports = function() {
 
 
 	var config = {
+
+		/// File Paths
 		temp: './.tmp/',
-		//file paths
 		alljs:[
 		'./src/**/*.js',
 		'./*.js'
 		],
+		testjs: './test/',
 		server: server,
 
 		//NODE SETTINGS
