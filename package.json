@@ -18,9 +18,10 @@
   "homepage": "https://github.com/informaticslab/monitor#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "del": "^2.2.0",
     "express": "^4.13.4",
     "mongoose": "^4.4.10",
-    "net-ping": "^1.2.0",
+    "ping": "^0.1.10",
     "request": "^2.69.0"
   },
   "devDependencies": {

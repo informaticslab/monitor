@@ -34,7 +34,7 @@ gulp.task('run-dev', ['vet'], function() {
 	return $.nodemon(nodeOptions)
 		.on('restart', ['vet'], function(ev) {
 			log('*** nodemon restarted');
-			log('files changed on restart: ' + ev);
+			log('Files changed on restart: ' + ev);
 		})
 		.on('start', function() {
 			log('*** nodemon started');
