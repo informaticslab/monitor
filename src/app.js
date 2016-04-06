@@ -1,7 +1,6 @@
 'use strict';
 ///
 var express = require('express'),
-	ping = require('ping'),
 	http = require('http');
 var app = express();
 
