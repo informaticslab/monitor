@@ -46,6 +46,15 @@ var services = [
 			port: '80',
 			timeout: 10000,
 			warningThreshold: 3000
+		},
+		{
+			name: 'Jira',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://jira.phiresearchlab.org/secure/Dashboard.jspa',
+			port: '80',
+			timeout: 10000,
+			warningThreshold: 3000
 		}
 ];
 
@@ -59,7 +68,7 @@ var monitor = new MonitorFactory(services, new MockedStorage(null));
 consoleUtil(monitor);
 
 monitor.startAll({randomDelayOnInit: commander.maxInitialDelay});
-console.log('Starting monitor ' + services.length +' services loaded');
+console.log('Starting monitor ' + services.length +' services loaded...');
 
 
 
