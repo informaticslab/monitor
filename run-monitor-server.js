@@ -12,11 +12,6 @@ var RETURN_CODES = {
   GENERIC_ERROR: 2
 };
 
-function exit(code){
-	redisStore.quit();
-	process.exit(code);
-}
-
 var seedServices = [
 		{
 			name: 'IIU Lab Website',
@@ -99,6 +94,11 @@ redisStore.getServices({}, function(err, services) {
 	monitor.startAll({randomDelayOnInit: commander.maxInitialDelay});
 	console.log('Starting monitor ' + services.length +' services loaded...');
 });
+
+function exit(code){
+	redisStore.quit();
+	process.exit(code);
+}
 
 // var monitor = new MonitorFactory(services, new MockedStorage(null));
 // consoleUtil(monitor);
