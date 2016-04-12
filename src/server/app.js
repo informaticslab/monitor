@@ -1,7 +1,10 @@
 'use strict';
-///
+
 var express = require('express'),
-	http = require('http');
+	bodyParser = require('bodyParser')
+	storeFactory = require('../../lib/store/store-factory');
+
+var store = storeFactory.getStorageInstance('development');
 
 var app = express();
 
