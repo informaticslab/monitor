@@ -2,11 +2,15 @@
 
 var express = require('express'),
 	bodyParser = require('bodyParser')
-	storeFactory = require('../../lib/store/store-factory');
+	storeFactory = require('./../../lib/store/store-factory')
+	servicesApi = require('./api/services') ;
 
 var store = storeFactory.getStorageInstance('development');
+if (!store) {
+	console.error('Error creating storage for env');
+}
 
-var app = express();
+var app = express(store);
 
 var port = process.env.PORT || 3000;
 
