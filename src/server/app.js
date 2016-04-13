@@ -5,6 +5,7 @@ var express = require('express'),
 	compress = require('compression'),
 	storeFactory = require('./../../lib/store/store-factory'),
 	servicesApi = require('./api/services'),
+	path = require('path'),
 	reportsApi = require('./api/reports');
 
 var store = storeFactory.getStorageInstance('development');
@@ -14,12 +15,14 @@ if (!store) {
 var app = express(store);
 var port = process.env.PORT || 3000;
 
+function serveIndex(req, res) {
+	res.sendFile(path.resolve(__dirname, 'index.html'));
+}
+
 app.use(compress());
 app.use('/api/report', reportsApi.getRoutes(store));
 app.use('/api', servicesApi.getRoutes(store));
-app.get('/', function(req, res) {
-	res.send('Home route');
-});
+app.get('/', serveIndex);
 
 app.listen(port, function() {
 	console.log('Gulp is running this app on: ' + port);
