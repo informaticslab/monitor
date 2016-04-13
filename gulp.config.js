@@ -10,6 +10,7 @@ module.exports = function() {
 		'./src/**/*.js',
 		'./*.js'
 		],
+		allts: './src/client/app/**/*.ts',
 		testjs: './test/',
 		server: server,
 
