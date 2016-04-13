@@ -88,7 +88,7 @@ redisStore.getServices({}, function(err, services) {
 		}
 	}
 
-	var monitor = new MonitorFactory(services, new MockedStorage(null));
+	var monitor = new MonitorFactory(services, redisStore); 
 
 	consoleUtil(monitor);
 	monitor.startAll({randomDelayOnInit: commander.maxInitialDelay});

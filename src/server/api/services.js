@@ -4,7 +4,7 @@ var moment = require('moment'),
 
 module.exports.getRoutes = function(store) {
 
-	if(!storage) {
+	if(!store) {
 		throw new Error('data store needed');
 	}
 
@@ -22,7 +22,7 @@ module.exports.getRoutes = function(store) {
 			if(err) {
 				return res.status(500).json({error: err});
 			}
-			return res.status(200).json({id: id);
+			return res.status(200).json({id: id});
 		});
 	});
 
