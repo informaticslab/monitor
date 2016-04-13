@@ -21,6 +21,8 @@
     "body-parser": "^1.15.0",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
+    "compression": "^1.6.1",
+    "concat-stream": "^1.5.1",
     "debug": "^2.2.0",
     "del": "^2.2.0",
     "express": "^4.13.4",
@@ -30,6 +32,8 @@
     "redis": "^2.6.0-1",
     "request": "^2.69.0",
     "shortid": "^2.2.6",
+    "stream-spigot": "^3.0.5",
+    "timestream-aggregates": "^0.1.7",
     "validator": "^5.2.0"
   },
   "devDependencies": {
