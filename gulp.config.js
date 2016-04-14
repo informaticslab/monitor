@@ -1,7 +1,6 @@
 module.exports = function() {
 	var server = './src/';
 
-
 	var config = {
 
 		/// File Paths
@@ -16,7 +15,7 @@ module.exports = function() {
 
 		//NODE SETTINGS
 		defaultPort: 8000,
-		nodeServer: './src/server/app.js'
+		nodeServer: './dist/server/app.js'
 	};
 
 	return config;

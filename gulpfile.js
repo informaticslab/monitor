@@ -62,35 +62,33 @@ gulp.task('compile', ['clean'], function() {
 		.pipe(gulp.dest('dist/client/app'));
 });
 
-// copy cleint dependencies
-gulp.task('copy:libs', ['clean'], function() {
-	return gulp
-		.src([
-			'node_modules/angular2/bundles/angular2-polyfills.js',
-			'node_modules/systemjs/dist/system.src.js',
-			'node_modules/rxjs/bundles/Rx.js',
-			'node_modules/angular2/bundles/angular2.dev.js',
-			'node_modules/angular2/bundles/router.dev.js',
-			'node_modules/es6-shim/es6-shim.min.js',
-			'node_modules/systemjs/dist/system-polyfills.js',
-		])
-		.pipe(gulp.dest('dist/client/lib'));
-});
-
-//cop typings
+// Copy typings
 gulp.task('copy:typings', ['clean'], function() {
 	return gulp
 		.src('typings/**/*')
 		.pipe(gulp.dest('dist/typings'));
 });
 
-// copy static assets - i.e. non TypeScript compiled source
+// copy client static assets - i.e. non TypeScript compiled source
 gulp.task('copy:assets', ['clean'], function() {
 	return gulp
 		.src(['src/client/app/**/*', 'src/client/index.html', '!src/client/app/**/*.ts', '!src/client/app/*.json'], { base: './src/client'})
 		.pipe(gulp.dest('dist/client'));
 });
 
+// copy server files to dist folder
+gulp.task('copy:server', ['clean'], function() {
+	return gulp
+		.src(['src/server/**/*.js'], {base: './src/server'})
+		.pipe(gulp.dest('dist/server'));
+});
+
+// Copy monitor files to dist folder
+gulp.task('copy:monitor', ['clean'], function() {
+	return gulp
+		.src(['lib/**/*.js'])
+		.pipe(gulp.dest('dist/lib'));
+});
 // gulp.task('test', function() {
 // 	$.env({var: {ENV:'Test'}});
 
@@ -99,10 +97,11 @@ gulp.task('copy:assets', ['clean'], function() {
 // 		.pipe($.mocha({reporter: 'nyan'}));
 // });
 
-gulp.task('build-client', ['compile', 'copy:libs', 'copy:assets']);
+gulp.task('build', ['compile', 'copy:assets', 'copy:server', 'copy:monitor']);
+gulp.task('run-sauron',['build', 'run-server-dev']);
 
 
-///////////////
+/////////////////////////
 function log(msg) {
 	if (typeof(msg) === 'object') {
 		for (var item in msg) {
