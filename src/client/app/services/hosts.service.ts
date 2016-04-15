@@ -22,8 +22,15 @@ export class MonitorService {
 
 	getServices(){
 		return this._http.get('/api/services')
-			.map((response: Response) => <Service[]>response.json().data)
-			.do(data => console.log(data))
+			.map((response: Response) => <Service[]>response.json())
+			.do(Response => console.log(Response))
+			.catch(this.handleError);
+	}
+
+	getServicesById(id){
+		return this._http.get('/api/services/:id', id)
+			.map((response: Response) => <Service[]>response.json())
+			.do(Response => console.log(Response))
 			.catch(this.handleError);
 	}
 

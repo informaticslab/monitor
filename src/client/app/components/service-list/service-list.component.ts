@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {Service, MonitorService} from '../../services/services';
+import {Service, MonitorService} from '../../services/hosts.service';
 
 @Component({
 	selector: 'service-list',
