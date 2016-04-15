@@ -12,9 +12,9 @@ export class ServiceListComponent {
 
 	constructor(private _monitorService: MonitorService) {}
 
-	ngOnInit() {
-		this.getHostList();
-	}
+	// ngOnInit() {
+	// 	this.getHostList();
+	// }
 
 	getHostList(){
 		this._monitorService.getServices()

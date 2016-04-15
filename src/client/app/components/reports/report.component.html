@@ -1,0 +1,30 @@
+
+
+<table id='report-table' class='table'>
+	<thead>
+		<th>All the things</th>
+	</thead>
+	<tbody>
+		<tr *ngFor='#report of reports'>
+			<td class='status'>
+				<span *ngIf='report.status.currentOutage' class='label label-danger'>offline</span>
+				<span *ngIf='!report.status.currentOutage' class='labal label-success'>online</span>
+			</td>
+			<td class='host' data-title='Host'>
+				{{report.service.name}}
+			</td>
+			<td class='uptime' data-title='last 24 hours'>
+				{{report.status.last24Hours.uptime}}%
+			</td>
+			<td class='uptime' data-title='last week'>
+				{{report.status.lastWeek.uptime}}%
+			</td>
+			<td class='downtime' data-title='downtime last 24 hours'>
+				<span *ngIf='report.status.last24Hours.downtime' class='label label-danger'>
+					<span>{{report.status.last24Hours.downtime}}</span>
+				</span>
+			</td>
+		</tr>
+	</tbody>
+	
+</table>
