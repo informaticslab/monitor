@@ -25,7 +25,7 @@ gulp.task('lint', function() {
 		.pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('run-server-dev', ['lint'], function() {
+gulp.task('run-server-dev', function() {
 	log('Running server in development');
 	var isDev = true;
 

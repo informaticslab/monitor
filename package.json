@@ -20,6 +20,7 @@
     "angular2": "2.0.0-beta.15",
     "async": "^2.0.0-rc.3",
     "body-parser": "^1.15.0",
+    "bootstrap": "^3.3.6",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
     "compression": "^1.6.1",

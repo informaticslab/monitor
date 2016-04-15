@@ -2,13 +2,17 @@
 
 <table id='report-table' class='table'>
 	<thead>
-		<th>All the things</th>
+		<th>Status</th>
+		<th>Host</th>
+		<th>last 24 hours</th>
+		<th>last Week</th>
+		<th>downtime last 24 hours</th>
 	</thead>
 	<tbody>
 		<tr *ngFor='#report of reports'>
 			<td class='status'>
 				<span *ngIf='report.status.currentOutage' class='label label-danger'>offline</span>
-				<span *ngIf='!report.status.currentOutage' class='labal label-success'>online</span>
+				<span *ngIf='!report.status.currentOutage' class='label label-success'>online</span>
 			</td>
 			<td class='host' data-title='Host'>
 				{{report.service.name}}
