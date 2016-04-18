@@ -3,7 +3,8 @@ import {Report, ReportService} from '../../services/reports.service';
 
 @Component({
 	selector: 'report',
-	templateUrl: '/app/components/reports/report.component.html'
+	templateUrl: '/app/components/reports/report.component.html',
+	styleUrls: ['./app/components/reports/report.component.css']
 })
 
 export class ReportComponent {

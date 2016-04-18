@@ -72,7 +72,7 @@ gulp.task('copy:typings', ['clean'], function() {
 // copy client static assets - i.e. non TypeScript compiled source
 gulp.task('copy:assets', ['clean'], function() {
 	return gulp
-		.src(['src/client/app/**/*', 'src/client/index.html', '!src/client/app/**/*.ts', '!src/client/app/*.json'], { base: './src/client'})
+		.src(['src/client/app/**/*', 'src/client/index.html', 'src/client/assets/**/*','!src/client/app/**/*.ts', '!src/client/app/*.json'], { base: './src/client'})
 		.pipe(gulp.dest('dist/client'));
 });
 

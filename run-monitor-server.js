@@ -14,7 +14,7 @@ var RETURN_CODES = {
 
 var seedServices = [
 		{
-			name: 'IIU Lab Website',
+			name: 'phiresearchlab.org',
 			interval: 30 * 1000,
 			failureInterval: 20 * 1000,
 			url: 'http://www.phiresearchlab.org',
@@ -23,7 +23,7 @@ var seedServices = [
 			warningThreshold: 3000
 		},
 		{
-			name: 'Google',
+			name: 'google.com',
 			interval: 30 * 1000,
 			failureInterval: 20 * 1000,
 			url: 'http://www.google.com',
@@ -55,6 +55,24 @@ var seedServices = [
 			failureInterval: 20 * 1000,
 			url: 'http://jira.phiresearchlab.org/secure/Dashboard.jspa',
 			port: '80',
+			timeout: 10000,
+			warningThreshold: 3000
+		},
+		{
+			name: 'Confluence',
+			interval: 30*1000,
+			failureInterval: 20 * 1000,
+			url:'http://confluence.phiresearchlab.org',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 3000
+		},
+		{
+			name: 'View',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://view.phiresearchlab.org',
+			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000
 		}
