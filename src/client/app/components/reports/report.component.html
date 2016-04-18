@@ -25,7 +25,7 @@
 			</td>
 			<td class='downtime' data-title='downtime last 24 hours'>
 				<span *ngIf='report.status.last24Hours.downtime' class='label label-danger'>
-					<span>{{report.status.last24Hours.downtime}}</span>
+					<span>{{report.status.last24Hours.downtime/60000}} minutes</span>
 				</span>
 			</td>
 		</tr>
