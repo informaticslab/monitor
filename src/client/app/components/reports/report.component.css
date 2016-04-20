@@ -1,5 +1,5 @@
 .widget-success{
-  background: #A5D6A7;
+  background: #69F0AE;
 }
 
 .widget-danger {
@@ -10,4 +10,8 @@
 .widget-warning {
   background: #FF9100;
   color:white;
+}
+
+.center {
+  text-align: center;
 }

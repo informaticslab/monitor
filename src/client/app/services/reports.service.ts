@@ -15,9 +15,19 @@ export class ReportService {
 
 	getReports(){
 		return this._http.get('/api/report/services')
-			.map((response: Response) => <Report[]>response.json())
-			.do(Response => console.log(Response))
+			// .map((response: Response) => <Report[]>response.json())
+			.map(this.extractData)
+			// .do(Response => console.log(Response))
 			.catch(this.handleError);
+	}
+
+	private extractData(res: Response) {
+		if (res.status < 200 || res.status >= 300) {
+			throw new Error('Bad response status: ' + res.status);
+		}
+		let body = res.json();
+		console.log(body);
+		return <Report[]>body || [];
 	}
 
 	private handleError(error: Response) {

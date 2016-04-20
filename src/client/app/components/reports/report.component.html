@@ -1,37 +1,39 @@
 <div class="row">
-	<div class="col-lg-4 col-md-8 col-xs-12" *ngFor='#report of reports'>
-		<div *ngIf='!report.status.currentOutage' class='widget'>
-			<div class='widget-header widget-success'>
-				{{report.service.name}} <i class='fa fa-desktop fa-lg pull-right'></i>
+	<div class="col-lg-4 col-md-6 col-xs-12" *ngFor='#report of reports'>
+		<div *ngIf='!report.status.currentOutage.currentOutage' class='widget'>
+			<div class='widget-header widget-success center'>
+				<i class='fa fa-arrow-up'></i> {{report.service.name}} 
 			</div>
 			<div class='widget-body'>
-				<ul class='list-group'>
-					<li class='list-group-item'>Host: {{report.service.host}}</li>
-					<li class='list-group-item'>Uptime: {{report.status.last24Hours.uptime}}%</li>
-				</ul>
+				<div class='center'>
+					<div class='clearfix'>Host: {{report.service.host}}</div>
+					<div class='clearfix'>Uptime: {{report.status.last24Hours.uptime}}%</div>
+				</div>
 			</div> 
 		</div>
-		<div *ngIf='report.status.currentOutage'class='widget'>
-			<div class='widget-header widget-danger'>
-				{{report.service.name}} <i class='fa fa-exclamation-triangle fa-lg pull-right'></i>
+		<div *ngIf='report.status.currentOutage.currentOutage'class='widget'>
+			<div class='widget-header widget-danger center'>
+				<i class='fa fa-exclamation-triangle fa-lg'></i> {{report.service.name}} 
 			</div>
 			<div class='widget-body'>
-				<ul class='list-group'>
-					<li class='list-group-item'>Host: {{report.service.host}}</li>
-					<li class='list-group-item'>Uptime: {{report.status.last24Hours.uptime}}%</li>
-				</ul>
+				<div class='center'>
+					<div class='clearfix'>Host: {{report.service.host}}</div>
+					<div class='clearfix'>Down since: {{report.status.currentOutage.outageDuration}}</div>
+				</div>
 			</div> 
 		</div>
 	</div>
-	<div class="col-lg-4 col-md-8 col-xs-12" >
+	<div class="col-lg-4 col-md-6 col-xs-12" >
 		<div class='widget'>
-			<div class='widget-header widget-warning'>
-				WARNING
+			<div class='widget-header widget-warning center'>
+				<i class='fa fa-exclamation fa-lg'></i> WARNING
 			</div>
 			<div class='widget-body'>
-				<span>Warning sample</span>
+				<div class='center'>
+					<div class='clearfix'>Warn warn</div>
+					<div class='clearfix'>Warning you</div>
+				</div>
 			</div> 
 		</div>
-		
 	</div>
 </div>

@@ -68,7 +68,7 @@ var seedServices = [
 			name: 'Confluence',
 			interval: 30*1000,
 			failureInterval: 20 * 1000,
-			url:'http://confluence.phiresearchlab.org/confluene',
+			url:'http://confluence.phiresearchlab.org/confluence',
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
@@ -135,10 +135,10 @@ var seedServices = [
 			host: 'AWS'
 		},
 		{
-			name: 'CommSphere',
+			name: 'CommSphere Test',
 			interval: 30 * 1000,
 			failureInterval: 20 * 1000,
-			url: 'http://commsphere.phiresearchlab.org',
+			url: 'http://commspheretest.phiresearchlab.org',
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
@@ -155,16 +155,6 @@ var seedServices = [
 			host: 'IIU'
 		},
 		{
-			name: 'View Validations',
-			interval: 30 * 1000,
-			failureInterval: 20 * 1000,
-			url: 'http://viewvalidations.phiresearchlab.org',
-			port:'80',
-			timeout: 10000,
-			warningThreshold: 3000,
-			host: 'IIU'
-		},
-		{
 			name: 'CRA',
 			interval: 30 * 1000,
 			failureInterval: 20 * 1000,
@@ -175,20 +165,20 @@ var seedServices = [
 			host: 'IIU'
 		}, 
 		{
-			name: 'NSHN',
+			name: 'NHSN',
 			interval: 30 * 1000,
 			failureInterval: 20 * 1000,
-			url: 'http://nshn.phiresearchlab.org',
+			url: 'http://nhsn.phiresearchlab.org',
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
 			host: 'IIU'
 		},
 		{
-			name: 'NSHN Test',
+			name: 'NHSN Test',
 			interval: 30 * 1000,
 			failureInterval: 20 * 1000,
-			url: 'http://nshn-test.phiresearchlab.org',
+			url: 'http://nhsn-test.phiresearchlab.org',
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
