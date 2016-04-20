@@ -1,25 +1,29 @@
 <div class="row">
-	<div class="col-lg-3 col-md-6 col-xs-12" *ngFor='#report of reports'>
+	<div class="col-lg-4 col-md-8 col-xs-12" *ngFor='#report of reports'>
 		<div *ngIf='!report.status.currentOutage' class='widget'>
 			<div class='widget-header widget-success'>
-				{{report.service.name}}
+				{{report.service.name}} <i class='fa fa-desktop fa-lg pull-right'></i>
 			</div>
 			<div class='widget-body'>
-				<span>Host: {{report.service.host}}</span>
-				<span>Uptime: {{report.status.last24Hours.uptime}}</span>
+				<ul class='list-group'>
+					<li class='list-group-item'>Host: {{report.service.host}}</li>
+					<li class='list-group-item'>Uptime: {{report.status.last24Hours.uptime}}%</li>
+				</ul>
 			</div> 
 		</div>
 		<div *ngIf='report.status.currentOutage'class='widget'>
 			<div class='widget-header widget-danger'>
-				{{report.service.name}}
+				{{report.service.name}} <i class='fa fa-exclamation-triangle fa-lg pull-right'></i>
 			</div>
 			<div class='widget-body'>
-				<span>Host: {{report.service.host}}</span>
-				<span>Uptime: {{report.status.last24Hours.uptime}} %</span>
+				<ul class='list-group'>
+					<li class='list-group-item'>Host: {{report.service.host}}</li>
+					<li class='list-group-item'>Uptime: {{report.status.last24Hours.uptime}}%</li>
+				</ul>
 			</div> 
 		</div>
 	</div>
-	<div class="col-lg-3 col-md-6 col-xs-12" >
+	<div class="col-lg-4 col-md-8 col-xs-12" >
 		<div class='widget'>
 			<div class='widget-header widget-warning'>
 				WARNING

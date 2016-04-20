@@ -1,13 +1,13 @@
 .widget-success{
-  background: #69F0AE;
+  background: #A5D6A7;
 }
 
 .widget-danger {
-  background: #FF5252;
+  background: #F44336;
   color:white;
 }
 
 .widget-warning {
-  background: #FFAB40;
+  background: #FF9100;
   color:white;
 }
