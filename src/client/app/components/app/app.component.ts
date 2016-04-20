@@ -30,5 +30,5 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 ])
 
 export class AppComponent {
-
+	
 }

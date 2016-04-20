@@ -1,0 +1,22 @@
+{
+  "name": "Sauron",
+  "description": "Monitors readiness of the IIU's systems.",
+  "main": "app.js",
+  "authors": [
+    "Michael Ta"
+  ],
+  "license": "Apache",
+  "homepage": "https://github.com/informaticslab/sauron",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+        "rdash-ui": "1.0.*",
+        "bootstrap": "~3.2.0",
+        "font-awesome": "~4.1.0"
+  }
+}

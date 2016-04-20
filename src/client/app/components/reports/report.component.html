@@ -1,26 +1,33 @@
-<div class="page-header">
-	<h1>IIU Lab Sites</h1>
-	<hr>
-</div>
 <div class="row">
-	<div class="col-sm-4" *ngFor='#report of reports'>
-		<div *ngIf='!report.status.currentOutage' class='card card-success card-inverse'>
-			<div class='card-header card-success'>
+	<div class="col-lg-3 col-md-6 col-xs-12" *ngFor='#report of reports'>
+		<div *ngIf='!report.status.currentOutage' class='widget'>
+			<div class='widget-header widget-success'>
 				{{report.service.name}}
 			</div>
-			<div class='card-block bg-white'>
+			<div class='widget-body'>
+				<span>Host: {{report.service.host}}</span>
 				<span>Uptime: {{report.status.last24Hours.uptime}}</span>
 			</div> 
 		</div>
-		<div *ngIf='report.status.currentOutage'class='card card-danger card-inverse'>
-			<div class='card-header card-danger'>
+		<div *ngIf='report.status.currentOutage'class='widget'>
+			<div class='widget-header widget-danger'>
 				{{report.service.name}}
 			</div>
-			<div class='card-block bg-white'>
-				
-				Uptime: {{report.status.last24Hours.uptime}}
-
+			<div class='widget-body'>
+				<span>Host: {{report.service.host}}</span>
+				<span>Uptime: {{report.status.last24Hours.uptime}} %</span>
 			</div> 
 		</div>
+	</div>
+	<div class="col-lg-3 col-md-6 col-xs-12" >
+		<div class='widget'>
+			<div class='widget-header widget-warning'>
+				WARNING
+			</div>
+			<div class='widget-body'>
+				<span>Warning sample</span>
+			</div> 
+		</div>
+		
 	</div>
 </div>

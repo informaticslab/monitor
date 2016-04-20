@@ -20,7 +20,8 @@ var seedServices = [
 			url: 'http://www.phiresearchlab.org',
 			port: '80',
 			timeout: 10000,
-			warningThreshold: 3000
+			warningThreshold: 3000,
+			host: 'IIU'
 		},
 		{
 			name: 'google.com',
@@ -29,7 +30,8 @@ var seedServices = [
 			url: 'http://www.google.com',
 			port: '80',
 			timeout: 10000,
-			warningThreshold: 3000
+			warningThreshold: 3000,
+			host:'Google'
 		},
 		{
 			name: 'App Lab',
@@ -38,7 +40,8 @@ var seedServices = [
 			url: 'http://applab.phiresearchlab.org',
 			port: '80',
 			timeout: 10000,
-			warningThreshold: 3000
+			warningThreshold: 3000,
+			host:'IIU'
 		},
 		{
 			name: 'App Lab Dev',
@@ -47,7 +50,9 @@ var seedServices = [
 			url: 'http://applpydev.phiresearchlab.org',
 			port: '80',
 			timeout: 10000,
-			warningThreshold: 3000
+			warningThreshold: 3000,
+			host:'IIU'
+
 		},
 		{
 			name: 'Jira',
@@ -56,16 +61,18 @@ var seedServices = [
 			url: 'http://jira.phiresearchlab.org/secure/Dashboard.jspa',
 			port: '80',
 			timeout: 10000,
-			warningThreshold: 3000
+			warningThreshold: 3000,
+			host:'IIU'
 		},
 		{
 			name: 'Confluence',
 			interval: 30*1000,
 			failureInterval: 20 * 1000,
-			url:'http://confluence.phiresearchlab.org',
+			url:'http://confluence.phiresearchlab.org/confluene',
 			port:'80',
 			timeout: 10000,
-			warningThreshold: 3000
+			warningThreshold: 3000,
+			host: 'IIU'
 		},
 		{
 			name: 'View',
@@ -74,8 +81,150 @@ var seedServices = [
 			url: 'http://view.phiresearchlab.org',
 			port:'80',
 			timeout: 10000,
-			warningThreshold: 3000
+			warningThreshold: 3000,
+			host: 'IIU'
+		}, 
+		{
+			name: 'Edemo',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://edemo.phiresearchlab.org',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 3000,
+			host: 'IIU'
+		},
+		{
+			name: 'Apollo',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://apollo.phiresearchlab.org/apollo',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 3000,
+			host: 'AWS'
+		},
+		{
+			name: 'Jupiter',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://jupiter.phiresearchlab.org',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 3000,
+			host: 'AWS'
+		},
+		{
+			name: 'Anubis Dev',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://anubisdev.phiresearchlab.org',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 3000,
+			host: 'AWS'
+		},
+		{
+			name: 'MMWR CotW Test',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://mmwrcowtest.phiresearchlab.org',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 3000,
+			host: 'AWS'
+		},
+		{
+			name: 'CommSphere',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://commsphere.phiresearchlab.org',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 3000,
+			host: 'AWS'
+		},
+		{
+			name: 'Predict',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://predict.phiresearchlab.org',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 3000,
+			host: 'IIU'
+		},
+		{
+			name: 'View Validations',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://viewvalidations.phiresearchlab.org',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 3000,
+			host: 'IIU'
+		},
+		{
+			name: 'CRA',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://cra.phiresearchlab.org/cra',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 3000,
+			host: 'IIU'
+		}, 
+		{
+			name: 'NSHN',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://nshn.phiresearchlab.org',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 3000,
+			host: 'IIU'
+		},
+		{
+			name: 'NSHN Test',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://nshn-test.phiresearchlab.org',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 3000,
+			host:'IIU'
+		},
+		{
+			name: 'IMATS',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://imats.phiresearchlab.org',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 3000,
+			host:'IIU'
+		},
+		{
+			name: 'DHIS2',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://dhis2.phiresearchlab.org',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 3000,
+			host:'IIU'
+		},
+		{
+			name: 'Open MRS',
+			interval: 30 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://openmrs.phiresearchlab.org',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 3000,
+			host: 'IIU'
 		}
+
 ];
 
 commander

@@ -18,6 +18,7 @@ var port = process.env.PORT || 3000;
 app.use('/app', express.static(path.resolve(__dirname, '../', 'client/app')));
 app.use('/assets', express.static(path.resolve(__dirname, '../', 'client/assets')));
 app.use('/node_modules', express.static(path.resolve(__dirname, '../../', 'node_modules')));
+app.use('/bower_components', express.static(path.resolve(__dirname, '../../', 'bower_components')));
 function serveIndex(req, res) {
 	res.sendFile(path.resolve(__dirname, '../client/index.html'));
 }
