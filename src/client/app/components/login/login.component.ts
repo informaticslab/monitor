@@ -8,8 +8,8 @@ import {Router} from 'angular2/router';
 
 export class LoginComponent {
 	constructor(private _router: Router) { }
-	gotoDashboard() {
-		this._router.navigate(['Dashboard']);
+	goToHome() {
+		this._router.navigate(['Home']);
 	}
 	gotoSignup() {
 		this._router.navigate(['Signup']);

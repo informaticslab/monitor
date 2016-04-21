@@ -4,7 +4,7 @@ import {MonitorService, Service} from '../../services/hosts.service';
 import {ReportService, Report} from '../../services/reports.service';
 // import {ServiceListComponent} from '../service-list/service-list.component';
 // import {ReportComponent} from '../reports/report.component';
-import {DashboardComponent} from '../dashboard/dashboard.component';
+import {HomeComponent} from '../home/home.component';
 import {LoginComponent} from '../login/login.component';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
@@ -25,8 +25,8 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 })
 
 @RouteConfig([
-	{path: '/', component: LoginComponent, as: 'Login', useAsDefault:true},
-	{path: '/dashboard/...', component: DashboardComponent, as: 'Dashboard'}
+	{path: '/login', component: LoginComponent, as: 'Login', useAsDefault:true},
+	{path: '/', component: HomeComponent, as: 'Home'},
 ])
 
 export class AppComponent {

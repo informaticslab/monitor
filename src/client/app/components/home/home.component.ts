@@ -6,15 +6,15 @@ import {ReportComponent} from '../reports/report.component';
 // import {bootstrap} from 'angular2/platform/browser';
 
 @Component({
-	selector: 'dashboard',
-	templateUrl: './app/components/dashboard/dashboard.component.html',
+	selector: 'home',
+	templateUrl: './app/components/home/home.component.html',
 	directives: [ROUTER_DIRECTIVES, TopnavComponent]
 })
 @RouteConfig([
-	{path: '/', component:ReportComponent, as: 'Home', useAsDefault:true}
+	{path: '/', component:ReportComponent, as: 'Report', useAsDefault:true}
 ])
 
-export class DashboardComponent {
+export class HomeComponent {
 	mobileView: number = 992;
 	toggle: boolean = false;
 	;
