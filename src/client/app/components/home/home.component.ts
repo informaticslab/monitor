@@ -3,6 +3,7 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {TopnavComponent} from '../topnav/topnav.component';
 // import {SidebarComponent} from '../sidebar/sidebar.component';
 import {ReportComponent} from '../reports/report.component';
+import {DashboardComponent} from '../dashboard/dashboard.component';
 // import {bootstrap} from 'angular2/platform/browser';
 
 @Component({
@@ -11,7 +12,8 @@ import {ReportComponent} from '../reports/report.component';
 	directives: [ROUTER_DIRECTIVES, TopnavComponent]
 })
 @RouteConfig([
-	{path: '/', component:ReportComponent, as: 'Report', useAsDefault:true}
+	{path: '/', component:DashboardComponent, as: 'Dashboard', useAsDefault:true},
+	{path: '/report', component:ReportComponent, as: 'Report'}
 ])
 
 export class HomeComponent {

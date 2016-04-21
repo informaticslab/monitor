@@ -15,9 +15,7 @@ export class ReportService {
 
 	getReports(){
 		return this._http.get('/api/report/services')
-			// .map((response: Response) => <Report[]>response.json())
 			.map(this.extractData)
-			// .do(Response => console.log(Response))
 			.catch(this.handleError);
 	}
 
@@ -26,7 +24,7 @@ export class ReportService {
 			throw new Error('Bad response status: ' + res.status);
 		}
 		let body = res.json();
-		console.log(body);
+		// console.log(body);
 		return <Report[]>body || [];
 	}
 

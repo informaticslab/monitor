@@ -26,7 +26,7 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 
 @RouteConfig([
 	{path: '/login', component: LoginComponent, as: 'Login', useAsDefault:true},
-	{path: '/', component: HomeComponent, as: 'Home'},
+	{path: '/home/...', component: HomeComponent, as: 'Home'},
 ])
 
 export class AppComponent {
