@@ -18,6 +18,7 @@
   "homepage": "https://github.com/informaticslab/monitor#readme",
   "dependencies": {
     "angular2": "2.0.0-beta.15",
+    "angular2-moment": "^0.5.0",
     "async": "^2.0.0-rc.3",
     "body-parser": "^1.15.0",
     "bootstrap": "^3.3.6",

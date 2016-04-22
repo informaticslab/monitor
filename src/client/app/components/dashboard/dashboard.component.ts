@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {Report, ReportService} from '../../services/reports.service';
 import {InputText, Schedule} from 'primeng/primeng';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
+import moment from 'moment/moment';
 
 
 @Component({
@@ -95,6 +96,8 @@ export class DashboardComponent {
 	private doughnutChartLabels = ['Resolved Tickets', 'Pending Tickets', 'Open Tickets'];
 	private doughnutChartData = [60, 10, 30];
 	private doughnutChartType = 'Doughnut';
+
+	private now = moment();
 	
 }
 
