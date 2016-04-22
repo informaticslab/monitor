@@ -30,11 +30,10 @@ export class DashboardComponent {
 			);
 	}
 
-	//will needto pull this out think
+	// Will need to pull this out think
 	private lineChartData: Array<any> = [
 		[65, 59, 80, 81, 56, 55, 40],
-		[28, 48, 40, 19, 86, 27, 90],
-		[18, 48, 77, 9, 100, 27, 40]
+		[28, 48, 40, 19, 86, 27, 90]
 	];
 	private lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 	private lineChartSeries: Array<any> = ['Series A', 'Series B', 'Series C'];
@@ -93,8 +92,8 @@ export class DashboardComponent {
 		// console.log(e);
 	}
 
-	private doughnutChartLabels = ['Open Tickets', 'Pending Tickets', 'Resolved Tickets'];
-	private doughnutChartData = [35, 45, 10];
+	private doughnutChartLabels = ['Resolved Tickets', 'Pending Tickets', 'Open Tickets'];
+	private doughnutChartData = [60, 10, 30];
 	private doughnutChartType = 'Doughnut';
 	
 }
