@@ -33,6 +33,7 @@
     "moment": "^2.12.0",
     "mongoose": "^4.4.10",
     "ng2-bootstrap": "^1.0.13",
+    "ng2-charts": "^1.0.3",
     "primeng": "^1.0.0-beta.3",
     "primeui": "^4.1.8",
     "redis": "^2.6.0-1",

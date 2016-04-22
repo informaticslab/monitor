@@ -27,7 +27,12 @@
 	<div class='col-md-4'>
 		<div class='widget'>
 			<div class='widget-body medium-adjust'>
-				Jira Tickets
+				<base-chart class="chart"
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [chartType]="doughnutChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></base-chart>
 			</div>
 		</div>
 	</div>
@@ -36,7 +41,14 @@
 	<div class='col-md-8'>
 		<div class='widget'>
 			<div class='widget-body medium-adjust'>
-				
+				 <base-chart class='chart' 
+                [data]='lineChartData'
+                [labels]='lineChartLabels'
+                [options]="lineChartOptions"
+                [colours]="lineChartColours"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></base-chart>
 			</div>
 		</div>
 	</div>
@@ -48,9 +60,7 @@
 		</div>
 	</div>
 </div>
-<div class='row'>
-  <p-lineChart [value]="data" width="640" height="320"></p-lineChart>
-</div>
+
 <div class='row'>
 	<div class='col-md-12'>
 		<div class='widget'>
