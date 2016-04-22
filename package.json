@@ -46,6 +46,7 @@
     "systemjs": "0.19.25",
     "timestream-aggregates": "^0.1.7",
     "validator": "^5.2.0",
+    "wunderground": "0.0.0",
     "zone.js": "0.6.10"
   },
   "devDependencies": {
