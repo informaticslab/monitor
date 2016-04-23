@@ -23,9 +23,25 @@ export class ReportService {
 		if (res.status < 200 || res.status >= 300) {
 			throw new Error('Bad response status: ' + res.status);
 		}
-		let body = res.json();
+		var body = res.json();
+		body = <Report[]>body;
 		// console.log(body);
-		return <Report[]>body || [];
+		var newBody = [];
+
+		//get all down status
+		for (let i = 0; i < body.length; i++) {
+			if(body[i].status.currentOutage.currentOutage !== null) {
+				newBody.push(body[i]);
+			}
+		}
+		for (let i = 0; i < body.length; i++) {
+			if(body[i].status.currentOutage.currentOutage === null) {
+				newBody.push(body[i]);
+			}
+		}
+
+		console.log(newBody);
+		return newBody || [];
 	}
 
 	private handleError(error: Response) {
