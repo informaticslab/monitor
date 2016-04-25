@@ -1,8 +1,9 @@
 import {Component} from 'angular2/core';
 import {Report, ReportService} from '../../services/reports.service';
+import {WeatherReport, WeatherService} from '../../services/weather.service';
 import {InputText, Schedule} from 'primeng/primeng';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
-import moment from 'moment/moment';
+// import moment from 'moment/moment';
 
 
 @Component({
@@ -15,12 +16,17 @@ import moment from 'moment/moment';
 export class DashboardComponent {
 	errorMessage: string;
 	reports: Report[];
+	weatherReport: WeatherReport[];
 
 
-	constructor(private _reportService: ReportService) {}
+	constructor(
+		private _reportService: ReportService,
+		private _weatherService: WeatherService
+	) {}
 
 	ngOnInit() {
 		this.getReports();
+		this.getCurrentWeather();
 	}
 
 	getReports() {
@@ -29,6 +35,15 @@ export class DashboardComponent {
 			reports => this.reports = reports,
 			error => this.errorMessage = <any>error
 			);
+	}
+
+	getCurrentWeather() {
+		this._weatherService.getCurrentConditions()
+			.subscribe(
+			weather => this.weatherReport = weather,
+			error => this.errorMessage = <any>error
+			);
+			console.log(this.weatherReport)
 	}
 
 	// Will need to pull this out think
@@ -97,7 +112,7 @@ export class DashboardComponent {
 	private doughnutChartData = [60, 10, 30];
 	private doughnutChartType = 'Doughnut';
 
-	private now = moment();
+	// private now = moment();
 	
 }
 

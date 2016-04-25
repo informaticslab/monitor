@@ -11,5 +11,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
 })
 
 export class TopnavComponent {
-
+	reloadPage() {
+		window.location.reload();
+	}
 }
