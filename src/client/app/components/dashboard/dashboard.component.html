@@ -16,10 +16,19 @@
       <div>
         <div *ngIf='weatherReport' class='widget widget-weather'>
           <div class='widget-body small-adjust'>
-            <h1>Atlanta</h1>
-            <img src='{{weatherReport.current_observation.icon_url}}'>
-            {{weatherReport.current_observation.weather}}
-            {{weatherReport.current_observation.temp_f}} &deg; 
+            
+            <div class='col-md-6'>
+              <h1>Atlanta</h1>
+            </div>
+            <div class='col-md-6'>
+              <div class='right'><h2>{{weatherReport.current_observation.temp_f}} &deg;</h2></div>
+              <div class='right'>
+                <img src='{{weatherReport.current_observation.icon_url}}'>
+                {{weatherReport.current_observation.weather}}
+              </div>
+              
+            </div>
+            
           </div>
         </div>
       </div>
@@ -128,26 +137,7 @@
                 <td>Rhapsody Training</td>
                 <td>05/07/2016</td>
               </tr>
-              <tr>
-                <td>IIUSD-191</td>
-                <td>Rhapsody Training</td>
-                <td>05/07/2016</td>
-              </tr>
-              <tr>
-                <td>IIUSD-191</td>
-                <td>Rhapsody Training</td>
-                <td>05/07/2016</td>
-              </tr>
-              <tr>
-                <td>IIUSD-191</td>
-                <td>Rhapsody Training</td>
-                <td>05/07/2016</td>
-              </tr>
-              <tr>
-                <td>IIUSD-191</td>
-                <td>Rhapsody Training</td>
-                <td>05/07/2016</td>
-              </tr>
+              
 
             </tbody>
           </table>    
@@ -160,9 +150,9 @@
 <div class='row'>
 	<div class='col-md-12'>
 		<div class='widget'>
-     <!--  <div class='widget-header'>
+      <div class='widget-header'>
         Website Monitoring
-      </div> -->
+      </div>
   			<div class='widget-body'>
           <div class='row'>
       			 <div class="col-lg-3 col-md-6 col-xs-12" *ngFor='#report of reports'>
@@ -186,7 +176,7 @@
                     <div class='center'>
                       <h4><i class='fa fa-exclamation-triangle fa-lg'></i> {{report.service.name}} </h4>
                       <div class='clearfix'>Host: {{report.service.host}}</div>
-                      <div class='clearfix'>Down: {{report.status.currentOutage.outageDuration}}</div>
+                      <div class='clearfix'>Down since: {{report.status.currentOutage.outageDuration}}</div>
                     </div>
                   </div> 
                 </div>
