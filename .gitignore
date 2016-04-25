@@ -2,3 +2,4 @@ node_modules
 dist
 dump.rdb
 bower_components
+npm-debug.log
