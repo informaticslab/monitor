@@ -3,7 +3,6 @@ import {Report, ReportService} from '../../services/reports.service';
 import {WeatherReport, WeatherService} from '../../services/weather.service';
 import {InputText, Schedule} from 'primeng/primeng';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
-import {StatusPipe} from '../../pipes/status.pipe';
 // import moment from 'moment/moment';
 
 
@@ -11,8 +10,7 @@ import {StatusPipe} from '../../pipes/status.pipe';
 	selector: 'dashboard',
 	templateUrl: './app/components/dashboard/dashboard.component.html',
 	styleUrls: ['./app/components/dashboard/dashboard.component.css'],
-	directives: [InputText, CHART_DIRECTIVES],
-	pipes: [StatusPipe]
+	directives: [InputText, CHART_DIRECTIVES]
 })
 
 export class DashboardComponent {
