@@ -40,7 +40,7 @@ export class ReportService {
 			}
 		}
 
-		// console.log(newBody);
+		console.log(newBody);
 		return newBody || [];
 	}
 

@@ -24,16 +24,6 @@ var seedServices = [
 			host: 'IIU'
 		},
 		{
-			name: 'google.com',
-			interval: 30 * 1000,
-			failureInterval: 20 * 1000,
-			url: 'http://www.google.com',
-			port: '80',
-			timeout: 10000,
-			warningThreshold: 3000,
-			host:'Google'
-		},
-		{
 			name: 'App Lab',
 			interval: 30 * 1000,
 			failureInterval: 20 * 1000,
@@ -125,7 +115,7 @@ var seedServices = [
 			host: 'AWS'
 		},
 		{
-			name: 'MMWR CotW Test',
+			name: 'MMWR COTW',
 			interval: 30 * 1000,
 			failureInterval: 20 * 1000,
 			url: 'http://mmwrcowtest.phiresearchlab.org',
@@ -135,7 +125,7 @@ var seedServices = [
 			host: 'AWS'
 		},
 		{
-			name: 'CommSphere Test',
+			name: 'CommSphere',
 			interval: 30 * 1000,
 			failureInterval: 20 * 1000,
 			url: 'http://commspheretest.phiresearchlab.org',

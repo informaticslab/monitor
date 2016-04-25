@@ -3,19 +3,33 @@
 	overflow-y: auto;
 }
 
+.small-adjust {
+	height:165px;
+}
+
 .widget-success{
-  background:#689F38;
+  background:#00897B;
   color:white;
 }
 
 .widget-danger {
-  background: #F44336;
+  background: #D32F2F;
   color:white;
 }
 
 .widget-warning {
   background: #FF9100;
   color:white;
+}
+
+.widget-clock{
+	background: #30426a;
+	color: white;
+}
+
+.widget-weather{
+	background: #00BCD4;
+	color:white;
 }
 
 .center {
@@ -32,6 +46,7 @@
 	display: block;
 	padding-top: 100%;
 }
+
 
 
 .sk-circle {
@@ -154,4 +169,30 @@
     -webkit-transform: scale(1);
             transform: scale(1);
   }
+}
+
+
+///Clock
+
+.clock-content {
+    // background: #2196F3;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    width: 400px;
+    font-family: lato,sans-serif;
+    color: white;
+}
+
+.date, .time {
+    color: white;
+    font-weight: 300;
+    font-size: 1.5em;
+}
+
+.date {
+    border-bottom: 2px solid #eee;
+}
+
+.time {
+    font-size: 3em;
+    text-align: right;
 }

@@ -3,6 +3,7 @@ import {Report, ReportService} from '../../services/reports.service';
 import {WeatherReport, WeatherService} from '../../services/weather.service';
 import {InputText, Schedule} from 'primeng/primeng';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
+import {StatusPipe} from '../../pipes/status.pipe';
 // import moment from 'moment/moment';
 
 
@@ -10,13 +11,15 @@ import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 	selector: 'dashboard',
 	templateUrl: './app/components/dashboard/dashboard.component.html',
 	styleUrls: ['./app/components/dashboard/dashboard.component.css'],
-	directives: [InputText, CHART_DIRECTIVES]
+	directives: [InputText, CHART_DIRECTIVES],
+	pipes: [StatusPipe]
 })
 
 export class DashboardComponent {
 	errorMessage: string;
 	reports: Report[];
 	weatherReport: WeatherReport[];
+
 
 
 	constructor(
@@ -27,6 +30,7 @@ export class DashboardComponent {
 	ngOnInit() {
 		this.getReports();
 		this.getCurrentWeather();
+		this.getCurrentTime();
 	}
 
 	getReports() {
@@ -43,7 +47,28 @@ export class DashboardComponent {
 			weather => this.weatherReport = weather,
 			error => this.errorMessage = <any>error
 			);
-			console.log(this.weatherReport)
+	}
+
+	d = new Date();
+	monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	currentDate = this.monthNames[this.d.getMonth()] + " " + this.d.getDate() + ", " + this.d.getFullYear();
+	currentTime = '';
+
+	getCurrentTime() {
+		setInterval(()=>{
+			var time = new Date();
+			var hours = time.getHours();
+			var minutes = time.getMinutes();
+			var s = time.getSeconds();
+
+			var ampm = hours <= 11 ? 'am' : 'pm';
+			var strTime = [hours % 12,
+				(minutes < 10 ? "0" + minutes : minutes)
+			].join(':') + ampm;
+
+			this.currentTime = strTime;
+		},
+		1000)
 	}
 
 	// Will need to pull this out think
@@ -112,7 +137,40 @@ export class DashboardComponent {
 	private doughnutChartData = [60, 10, 30];
 	private doughnutChartType = 'Doughnut';
 
-	// private now = moment();
+	////////////////////////////
+	//CLOCK
+	////////////////////////////
+	getTimeAndDate() {
+
+		// let d = new Date();
+		// let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+		var d = new Date();
+		var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+
+
+		function getDate() {
+			this.currentDate = monthNames[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+		}
+
+		function timer() {
+			setTimeout(timer, 1000);
+			var d = new Date();
+			var hours = d.getHours();
+			var minutes = d.getMinutes();
+			var ampm = hours <= 11 ? 'am' : 'pm';
+			var strTime = [hours % 12,
+				(minutes < 10 ? "0" + minutes : minutes)
+			].join(':') + ampm;
+			this.currentTime = strTime;
+			setTimeout(timer, 1000);
+		}
+
+		getDate();
+		timer();
+	}
+	
 	
 }
 
