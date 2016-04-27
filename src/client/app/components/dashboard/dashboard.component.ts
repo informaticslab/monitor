@@ -1,5 +1,4 @@
 import {Component} from 'angular2/core';
-// import {Report, ReportService} from '../../services/report.service';
 import {InputText, Schedule} from 'primeng/primeng';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 import {JiraResults, JiraService} from '../../services/jira.service';
@@ -24,19 +23,9 @@ export class DashboardComponent {
 	) {}
 
 	ngOnInit() {
-		// this.getReports();
 		this.getCurrentTime();
 		// this.getJiraIssues();
 	}
-
-	// getReports() {
-	// 	this._reportService.getReports()
-	// 		.subscribe(
-	// 		reports => this.reports = reports,
-	// 		error => this.errorMessage = <any>error
-	// 		);
-	// }
-
 
 	getJiraIssues(){
 		this._jiraService.getSDIssues()
