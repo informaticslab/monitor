@@ -1,8 +1,9 @@
 import {Component} from 'angular2/core';
 import {Report, ReportService} from '../../services/reports.service';
-import {WeatherReport, WeatherService} from '../../services/weather.service';
 import {InputText, Schedule} from 'primeng/primeng';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
+import {JiraResults, JiraService} from '../../services/jira.service';
+import {WeatherComponent} from '../weather/weather.component'
 // import moment from 'moment/moment';
 
 
@@ -10,25 +11,25 @@ import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 	selector: 'dashboard',
 	templateUrl: './app/components/dashboard/dashboard.component.html',
 	styleUrls: ['./app/components/dashboard/dashboard.component.css'],
-	directives: [InputText, CHART_DIRECTIVES]
+	directives: [InputText, CHART_DIRECTIVES, WeatherComponent]
 })
 
 export class DashboardComponent {
 	errorMessage: string;
 	reports: Report[];
-	weatherReport: WeatherReport[];
+	jiraResults: JiraResults[];
 
 
 
 	constructor(
 		private _reportService: ReportService,
-		private _weatherService: WeatherService
+		private _jiraService: JiraService
 	) {}
 
 	ngOnInit() {
 		this.getReports();
-		this.getCurrentWeather();
 		this.getCurrentTime();
+		// this.getJiraIssues();
 	}
 
 	getReports() {
@@ -39,10 +40,11 @@ export class DashboardComponent {
 			);
 	}
 
-	getCurrentWeather() {
-		this._weatherService.getCurrentConditions()
+
+	getJiraIssues(){
+		this._jiraService.getSDIssues()
 			.subscribe(
-			weather => this.weatherReport = weather,
+			issues => this.jiraResults = issues,
 			error => this.errorMessage = <any>error
 			);
 	}

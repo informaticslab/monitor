@@ -14,23 +14,7 @@
     </div>
     <div class='row'>
       <div>
-        <div *ngIf='weatherReport' class='widget widget-weather'>
-          <div class='widget-body small-adjust'>
-            
-            <div class='col-md-6'>
-              <h1>Atlanta</h1>
-            </div>
-            <div class='col-md-6'>
-              <div class='right'><h2>{{weatherReport.current_observation.temp_f}} &deg;</h2></div>
-              <div class='right'>
-                <img src='{{weatherReport.current_observation.icon_url}}'>
-                {{weatherReport.current_observation.weather}}
-              </div>
-              
-            </div>
-            
-          </div>
-        </div>
+        <weather-widget></weather-widget>
       </div>
     </div>
 	</div>

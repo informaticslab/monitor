@@ -25,7 +25,6 @@ export class ReportService {
 		}
 		var body = res.json();
 		body = <Report[]>body;
-		// console.log(body);
 		var newBody = [];
 
 		//get all down status
@@ -40,7 +39,7 @@ export class ReportService {
 			}
 		}
 
-		console.log(newBody);
+		// console.log(newBody);
 		return newBody || [];
 	}
 
