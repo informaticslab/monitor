@@ -24,7 +24,7 @@ export class DashboardComponent {
 
 	ngOnInit() {
 		this.getCurrentTime();
-		// this.getJiraIssues();
+		this.getJiraIssues();
 	}
 
 	getJiraIssues(){
