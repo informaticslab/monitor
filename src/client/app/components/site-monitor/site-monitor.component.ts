@@ -1,13 +1,13 @@
 import {Component} from 'angular2/core';
-import {Report, ReportService} from '../../services/reports.service';
+import {Report, ReportService} from '../../services/report.service';
 
 @Component({
-	selector: 'report',
-	templateUrl: '/app/components/reports/report.component.html',
-	styleUrls: ['./app/components/reports/report.component.css']
+	selector: 'site-monitor',
+	templateUrl: '/app/components/site-monitor/site-monitor.component.html',
+	styleUrls: ['./app/components/site-monitor/site-monitor.component.css']
 })
 
-export class ReportComponent {
+export class SiteMonitorComponent {
 	errorMessage: string;
 	reports: Report[];
 
