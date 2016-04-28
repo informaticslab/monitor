@@ -7,6 +7,7 @@ var express = require('express'),
 	servicesApi = require('./api/services'),
 	path = require('path'),
 	reportsApi = require('./api/reports'),
+	jiraApi = require('./api/jira'),
 	http = require('http');
 
 var store = storeFactory.getStorageInstance('development');
@@ -25,29 +26,9 @@ function serveIndex(req, res) {
 }
 
 
-app.use('/api/jira', function(){
-	var options = {
-		host:'jiradev.phiresearchlab.org',
-		path:'/rest/api/latest/issue/IIUSD-67',
-		headers:{
-			'Authorization': 'Basic dGFtaTpPdmVyd2F0Y2gx'
-		}
-	};
 
-
-	http.get(options, function(response){
-		var str = '';
-		console.log('Response is: ' + response.statusCode);
-		response.on('data', function(chunk) {
-			str+= chunk;
-		});
-
-		response.on('end', function() {
-			// console.log(str);
-		});
-	});
-});
 app.use(compress());
+app.use('/api/jira', jiraApi.getRoutes());
 app.use('/api/report', reportsApi.getRoutes(store));
 app.use('/api', servicesApi.getRoutes(store));
 app.get('/*', serveIndex);

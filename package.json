@@ -31,6 +31,8 @@
     "es6-shim": "^0.35.0",
     "express": "^4.13.4",
     "highcharts": "^4.2.3",
+    "jira-connector": "^2.3.0",
+    "lodash": "^4.11.1",
     "moment": "^2.12.0",
     "mongoose": "^4.4.10",
     "ng2-bootstrap": "^1.0.13",
