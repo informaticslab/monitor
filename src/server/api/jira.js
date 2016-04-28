@@ -23,7 +23,7 @@ module.exports.getRoutes = function() {
 				'pass':'Overwatch.1'
 			}
 
-		}, function(error, response, body) {
+		}, function(error, response, body) {   //REFACTOR, DEAR GOD REFACTOR
 			if (!error && response.statusCode === 200) {
 				var requestId = '10103';
 				var roomReservationArray = [];
@@ -33,7 +33,7 @@ module.exports.getRoutes = function() {
 				for(var i =0; i < parsedObj.length; i++) {
 					var issueObj = {};
 					if(parsedObj[i].fields.issuetype.id === requestId) {
-						if(parsedObj[i].fields.customfield_10863 !==null || parsedObj[i].fields.customfield_11108 !== null){
+						if(parsedObj[i].fields.customfield_10863 !==null){
 							issueObj.id = parsedObj[i].id;
 							issueObj.key = parsedObj[i].key;
 							issueObj.priority = parsedObj[i].fields.priority.name;
@@ -41,12 +41,56 @@ module.exports.getRoutes = function() {
 							issueObj.type = parsedObj[i].fields.issuetype.name;
 							issueObj.summary = parsedObj[i].fields.summary;
 							issueObj.reservedDate = parsedObj[i].fields.customfield_10863;
-							issueObj.reservedDate1 = parsedObj[i].fields.customfield_11108;
-							issueObj.reservedDate2 = parsedObj[i].fields.customfield_11109;
-							issueObj.reservedDate3 = parsedObj[i].fields.customfield_11110;
-							issueObj.reservedDate4 = parsedObj[i].fields.customfield_11111;
-							issueObj.reservedDate5 = parsedObj[i].fields.customfield_11112;
-
+							roomReservationArray.push(issueObj);
+						}
+						if(parsedObj[i].fields.customfield_11108 !==null){
+							issueObj.id = parsedObj[i].id;
+							issueObj.key = parsedObj[i].key;
+							issueObj.priority = parsedObj[i].fields.priority.name;
+							issueObj.status = parsedObj[i].fields.status.name;
+							issueObj.type = parsedObj[i].fields.issuetype.name;
+							issueObj.summary = parsedObj[i].fields.summary;
+							issueObj.reservedDate = parsedObj[i].fields.customfield_11108;
+							roomReservationArray.push(issueObj);
+						}
+						if(parsedObj[i].fields.customfield_11109 !==null){
+							issueObj.id = parsedObj[i].id;
+							issueObj.key = parsedObj[i].key;
+							issueObj.priority = parsedObj[i].fields.priority.name;
+							issueObj.status = parsedObj[i].fields.status.name;
+							issueObj.type = parsedObj[i].fields.issuetype.name;
+							issueObj.summary = parsedObj[i].fields.summary;
+							issueObj.reservedDate = parsedObj[i].fields.customfield_11109;
+							roomReservationArray.push(issueObj);
+						}
+						if(parsedObj[i].fields.customfield_11110 !==null){
+							issueObj.id = parsedObj[i].id;
+							issueObj.key = parsedObj[i].key;
+							issueObj.priority = parsedObj[i].fields.priority.name;
+							issueObj.status = parsedObj[i].fields.status.name;
+							issueObj.type = parsedObj[i].fields.issuetype.name;
+							issueObj.summary = parsedObj[i].fields.summary;
+							issueObj.reservedDate = parsedObj[i].fields.customfield_11110;
+							roomReservationArray.push(issueObj);
+						}
+						if(parsedObj[i].fields.customfield_11111 !==null){
+							issueObj.id = parsedObj[i].id;
+							issueObj.key = parsedObj[i].key;
+							issueObj.priority = parsedObj[i].fields.priority.name;
+							issueObj.status = parsedObj[i].fields.status.name;
+							issueObj.type = parsedObj[i].fields.issuetype.name;
+							issueObj.summary = parsedObj[i].fields.summary;
+							issueObj.reservedDate = parsedObj[i].fields.customfield_11111;
+							roomReservationArray.push(issueObj);
+						}
+						if(parsedObj[i].fields.customfield_11112!==null){
+							issueObj.id = parsedObj[i].id;
+							issueObj.key = parsedObj[i].key;
+							issueObj.priority = parsedObj[i].fields.priority.name;
+							issueObj.status = parsedObj[i].fields.status.name;
+							issueObj.type = parsedObj[i].fields.issuetype.name;
+							issueObj.summary = parsedObj[i].fields.summary;
+							issueObj.reservedDate = parsedObj[i].fields.customfield_11112;
 							roomReservationArray.push(issueObj);
 						}
 					}
@@ -61,3 +105,4 @@ module.exports.getRoutes = function() {
 
 	return router;
 };
+
