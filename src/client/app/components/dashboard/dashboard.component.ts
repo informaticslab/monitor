@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {InputText, Schedule} from 'primeng/primeng';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
-import {JiraResults, JiraService} from '../../services/jira.service';
+import {JiraReservations, JiraService} from '../../services/jira.service';
 import {WeatherComponent} from '../weather/weather.component';
 import {SiteMonitorComponent} from '../site-monitor/site-monitor.component';
 // import moment from 'moment/moment';
@@ -16,7 +16,7 @@ import {SiteMonitorComponent} from '../site-monitor/site-monitor.component';
 
 export class DashboardComponent {
 	errorMessage: string;
-	jiraResults: JiraResults[];
+	jiraReservations: JiraReservations[];
 
 	constructor(
 		private _jiraService: JiraService
@@ -24,13 +24,13 @@ export class DashboardComponent {
 
 	ngOnInit() {
 		this.getCurrentTime();
-		this.getJiraIssues();
+		this.getJiraReservations();
 	}
 
-	getJiraIssues(){
-		this._jiraService.getSDIssues()
+	getJiraReservations(){
+		this._jiraService.getReservations()
 			.subscribe(
-			issues => this.jiraResults = issues,
+			jiraReservations => this.jiraReservations = jiraReservations,
 			error => this.errorMessage = <any>error
 			);
 	}

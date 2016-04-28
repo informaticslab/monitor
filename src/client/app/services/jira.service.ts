@@ -2,7 +2,7 @@ import {Injectable} from 'angular2/core';
 import {Http, Response, Headers, RequestOptions} from 'angular2/http';
 import {Observable} from 'rxjs/Rx';
 
-export class JiraResults {
+export class JiraReservations {
 	constructor(
 		public report: JSON
 	) { }
@@ -12,15 +12,8 @@ export class JiraResults {
 export class JiraService {
 	constructor(private _http: Http){}
 
-	getSDIssues(){
-		let url = 'http://jiradev.phiresearchlab.org/rest/api/latest/issue/IIUSD-67';
-		// let headers = new Headers({
-		// 	'Authorization': 'Basic dGFtaTpPdmVyd2F0Y2guMQ=='
-		// });
-		let headers = new Headers();
-		headers.append('Authorization', 'Basic dGFtaTpPdmVyd2F0Y2guMQ==');
-		// let options = new RequestOptions({ headers: headers });
-		return this._http.get(url, {headers:headers})
+	getReservations(){
+		return this._http.get('/api/jira/reservations')
 			.map(this.extractData)
 			.catch(this.handleError);
 	}

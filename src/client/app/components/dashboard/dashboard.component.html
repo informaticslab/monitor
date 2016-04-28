@@ -78,7 +78,7 @@
 	<div class='col-md-4'>
 		<div class='widget'>
       <div class='widget-header'>
-        Upcoming Lab Reservations (mocked data)
+        Upcoming Lab Reservations
       </div>
 			<div class='widget-body medium-adjust overflow-adjust'>
 				<div class='table-responsive'>
@@ -91,38 +91,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>IIUSD-123</td>
-                <td>S3P Training</td>
-                <td>04/28/2016</td>
+              <tr *ngFor='#reservation of jiraReservations'>
+                <td>{{reservation.key}}</td>
+                <td>{{reservation.summary}}</td>
+                <td>{{reservation.reservedDate}}</td>
               </tr>
-              <tr>
-                <td>IIUSD-146</td>
-                <td>DHIS 508 Training</td>
-                <td>04/30/2016</td>
-              </tr>
-              <tr>
-                <td>IIUSD-156</td>
-                <td>DHIS 508 Training</td>
-                <td>05/01/2016</td>
-              </tr>
-              <tr>
-                <td>IIUSD-189</td>
-                <td>Rhapsody Training</td>
-                <td>05/06/2016</td>
-              </tr>
-              <tr>
-                <td>IIUSD-191</td>
-                <td>Rhapsody Training</td>
-                <td>05/07/2016</td>
-              </tr>
-              <tr>
-                <td>IIUSD-191</td>
-                <td>Rhapsody Training</td>
-                <td>05/07/2016</td>
-              </tr>
-              
-
             </tbody>
           </table>    
         </div>
