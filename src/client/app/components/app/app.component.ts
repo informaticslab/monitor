@@ -3,7 +3,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
 import {MonitorService, Service} from '../../services/hosts.service';
 import {ReportService, Report} from '../../services/report.service';
 import {WeatherReport, WeatherService} from '../../services/weather.service';
-import {JiraResults, JiraService} from '../../services/jira.service';
+import {JiraReservations, JiraService} from '../../services/jira.service';
 import {HomeComponent} from '../home/home.component';
 import {LoginComponent} from '../login/login.component';
 import {HTTP_PROVIDERS} from 'angular2/http';

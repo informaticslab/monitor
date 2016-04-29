@@ -27,6 +27,7 @@ module.exports.getRoutes = function() {
 			if (!error && response.statusCode === 200) {
 				var requestId = '10103';
 				var roomReservationArray = [];
+				var dateNow = +new Date();
 								// console.log(body);
 				var parsedObj = JSON.parse(body);
 				parsedObj = parsedObj.issues;
@@ -40,63 +41,71 @@ module.exports.getRoutes = function() {
 							issueObj.status = parsedObj[i].fields.status.name;
 							issueObj.type = parsedObj[i].fields.issuetype.name;
 							issueObj.summary = parsedObj[i].fields.summary;
-							issueObj.reservedDate = parsedObj[i].fields.customfield_10863;
+							issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_10863);
 							roomReservationArray.push(issueObj);
 						}
-						if(parsedObj[i].fields.customfield_11108 !==null){
+						if(parsedObj[i].fields.customfield_11102 !==null){
 							issueObj.id = parsedObj[i].id;
 							issueObj.key = parsedObj[i].key;
 							issueObj.priority = parsedObj[i].fields.priority.name;
 							issueObj.status = parsedObj[i].fields.status.name;
 							issueObj.type = parsedObj[i].fields.issuetype.name;
 							issueObj.summary = parsedObj[i].fields.summary;
-							issueObj.reservedDate = parsedObj[i].fields.customfield_11108;
+							issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_11102);
 							roomReservationArray.push(issueObj);
 						}
-						if(parsedObj[i].fields.customfield_11109 !==null){
+						if(parsedObj[i].fields.customfield_11103 !==null){
 							issueObj.id = parsedObj[i].id;
 							issueObj.key = parsedObj[i].key;
 							issueObj.priority = parsedObj[i].fields.priority.name;
 							issueObj.status = parsedObj[i].fields.status.name;
 							issueObj.type = parsedObj[i].fields.issuetype.name;
 							issueObj.summary = parsedObj[i].fields.summary;
-							issueObj.reservedDate = parsedObj[i].fields.customfield_11109;
+							issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_11103);
 							roomReservationArray.push(issueObj);
 						}
-						if(parsedObj[i].fields.customfield_11110 !==null){
+						if(parsedObj[i].fields.customfield_11104 !==null){
 							issueObj.id = parsedObj[i].id;
 							issueObj.key = parsedObj[i].key;
 							issueObj.priority = parsedObj[i].fields.priority.name;
 							issueObj.status = parsedObj[i].fields.status.name;
 							issueObj.type = parsedObj[i].fields.issuetype.name;
 							issueObj.summary = parsedObj[i].fields.summary;
-							issueObj.reservedDate = parsedObj[i].fields.customfield_11110;
+							issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_11104);
 							roomReservationArray.push(issueObj);
 						}
-						if(parsedObj[i].fields.customfield_11111 !==null){
+						if(parsedObj[i].fields.customfield_11105 !==null){
 							issueObj.id = parsedObj[i].id;
 							issueObj.key = parsedObj[i].key;
 							issueObj.priority = parsedObj[i].fields.priority.name;
 							issueObj.status = parsedObj[i].fields.status.name;
 							issueObj.type = parsedObj[i].fields.issuetype.name;
 							issueObj.summary = parsedObj[i].fields.summary;
-							issueObj.reservedDate = parsedObj[i].fields.customfield_11111;
+							issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_11105);
 							roomReservationArray.push(issueObj);
 						}
-						if(parsedObj[i].fields.customfield_11112!==null){
+						if(parsedObj[i].fields.customfield_11106!==null){
 							issueObj.id = parsedObj[i].id;
 							issueObj.key = parsedObj[i].key;
 							issueObj.priority = parsedObj[i].fields.priority.name;
 							issueObj.status = parsedObj[i].fields.status.name;
 							issueObj.type = parsedObj[i].fields.issuetype.name;
 							issueObj.summary = parsedObj[i].fields.summary;
-							issueObj.reservedDate = parsedObj[i].fields.customfield_11112;
+							issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_11106);
 							roomReservationArray.push(issueObj);
 						}
 					}
 				}
-				roomReservationArray = _.orderBy(roomReservationArray, ['reservedDate','reservedDate1'], ['asc']);
-				return res.send(roomReservationArray);
+				var filteredArray = [];
+				for(var j=0; j < roomReservationArray.length; j++){
+					if(roomReservationArray[j].reservedDate > dateNow){
+						filteredArray.push(roomReservationArray[j]);
+					}
+				}
+				// console.log('Array Post filter', roomReservationArray);
+
+				filteredArray = _.orderBy(filteredArray, ['reservedDate'], ['asc']);
+				return res.send(filteredArray);
 			} else {
 				console.log(error);
 			}

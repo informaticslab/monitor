@@ -27,6 +27,14 @@
   text-align: center;
 }
 
+.table {
+  color: #FFF;
+}
+
+.t-head {
+  background: #354962;
+}
+
 .square-it {
 	position: relative;
 	width: 50%;
