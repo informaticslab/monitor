@@ -1,116 +1,246 @@
 var http = require('http'),
 	express = require('express'),
 	request = require('request'),
-	_ = require('lodash');
+	_ = require('lodash'),
+	redis = require('redis');
 
 module.exports.getRoutes = function() {
 	var router = express.Router();
-
-	router.get('/reservations', function(req, res) {
-		var host = 'http://jiradev.phiresearchlab.org';
-		var path = '/rest/api/2/search?jql=project=IIUSD&startAt=0&maxResults=1000';
-		var options = {
-			host: host,
-			path: path,
-			headers:{
-				'Authorization': 'Basic dGFtaTpPdmVyd2F0Y2guMQ=='
-			}
-		};
-
-		request(host+path, {
+	var auth = {
 			'auth': {
 				'user':'tami',
 				'pass':'Overwatch.1'
-			}
+				}
+			};
 
-		}, function(error, response, body) {   //REFACTOR, DEAR GOD REFACTOR
-			if (!error && response.statusCode === 200) {
-				var requestId = '10103';
-				var roomReservationArray = [];
-				var dateNow = +new Date();
-								// console.log(body);
+	function IssueObject(id, key, priority, status, summary, reservedDate) {
+		this.id = id;
+		this.key = key;
+		this.priority = priority;
+		this.status = status;
+		this.summary = summary;
+		this.reservedDate = reservedDate;
+	}
+
+	router.get('/reservations', function(req, res) {
+		var reservationsQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%20IIUSD%20AND%20issuetype%20%3D%20%22Room%20Request%22%20AND%20status%20%3D%20%22Room%20Reserved%22';
+
+		request(reservationsQuery, auth, function(error,response, body) {
+			if(!error && response.statusCode === 200) {
 				var parsedObj = JSON.parse(body);
+				var roomReservationArray = [];
 				parsedObj = parsedObj.issues;
-				for(var i =0; i < parsedObj.length; i++) {
-					var issueObj = {};
-					if(parsedObj[i].fields.issuetype.id === requestId) {
-						if(parsedObj[i].fields.customfield_10863 !==null){
-							issueObj.id = parsedObj[i].id;
-							issueObj.key = parsedObj[i].key;
-							issueObj.priority = parsedObj[i].fields.priority.name;
-							issueObj.status = parsedObj[i].fields.status.name;
-							issueObj.type = parsedObj[i].fields.issuetype.name;
-							issueObj.summary = parsedObj[i].fields.summary;
-							issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_10863);
-							roomReservationArray.push(issueObj);
-						}
-						if(parsedObj[i].fields.customfield_11102 !==null){
-							issueObj.id = parsedObj[i].id;
-							issueObj.key = parsedObj[i].key;
-							issueObj.priority = parsedObj[i].fields.priority.name;
-							issueObj.status = parsedObj[i].fields.status.name;
-							issueObj.type = parsedObj[i].fields.issuetype.name;
-							issueObj.summary = parsedObj[i].fields.summary;
-							issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_11102);
-							roomReservationArray.push(issueObj);
-						}
-						if(parsedObj[i].fields.customfield_11103 !==null){
-							issueObj.id = parsedObj[i].id;
-							issueObj.key = parsedObj[i].key;
-							issueObj.priority = parsedObj[i].fields.priority.name;
-							issueObj.status = parsedObj[i].fields.status.name;
-							issueObj.type = parsedObj[i].fields.issuetype.name;
-							issueObj.summary = parsedObj[i].fields.summary;
-							issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_11103);
-							roomReservationArray.push(issueObj);
-						}
-						if(parsedObj[i].fields.customfield_11104 !==null){
-							issueObj.id = parsedObj[i].id;
-							issueObj.key = parsedObj[i].key;
-							issueObj.priority = parsedObj[i].fields.priority.name;
-							issueObj.status = parsedObj[i].fields.status.name;
-							issueObj.type = parsedObj[i].fields.issuetype.name;
-							issueObj.summary = parsedObj[i].fields.summary;
-							issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_11104);
-							roomReservationArray.push(issueObj);
-						}
-						if(parsedObj[i].fields.customfield_11105 !==null){
-							issueObj.id = parsedObj[i].id;
-							issueObj.key = parsedObj[i].key;
-							issueObj.priority = parsedObj[i].fields.priority.name;
-							issueObj.status = parsedObj[i].fields.status.name;
-							issueObj.type = parsedObj[i].fields.issuetype.name;
-							issueObj.summary = parsedObj[i].fields.summary;
-							issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_11105);
-							roomReservationArray.push(issueObj);
-						}
-						if(parsedObj[i].fields.customfield_11106!==null){
-							issueObj.id = parsedObj[i].id;
-							issueObj.key = parsedObj[i].key;
-							issueObj.priority = parsedObj[i].fields.priority.name;
-							issueObj.status = parsedObj[i].fields.status.name;
-							issueObj.type = parsedObj[i].fields.issuetype.name;
-							issueObj.summary = parsedObj[i].fields.summary;
-							issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_11106);
-							roomReservationArray.push(issueObj);
-						}
-					}
-				}
-				var filteredArray = [];
-				for(var j=0; j < roomReservationArray.length; j++){
-					if(roomReservationArray[j].reservedDate > dateNow){
-						filteredArray.push(roomReservationArray[j]);
-					}
-				}
-				// console.log('Array Post filter', roomReservationArray);
 
-				filteredArray = _.orderBy(filteredArray, ['reservedDate'], ['asc']);
-				return res.send(filteredArray);
+				for(var i=0; i< parsedObj.length; i++){
+					if(parsedObj[i].fields.customfield_10863 !== null){
+						var date1Obj = 
+							new IssueObject(
+								parsedObj[i].id, 
+								parsedObj[i].key,
+								parsedObj[i].fields.priority.name,
+								parsedObj[i].fields.status.name,
+								parsedObj[i].fields.summary,
+								Date.parse(parsedObj[i].fields.customfield_10863)
+							);
+						roomReservationArray.push(date1Obj);
+					}
+					if(parsedObj[i].fields.customfield_11102 !== null){
+						var date2Obj = 
+							new IssueObject(
+								parsedObj[i].id, 
+								parsedObj[i].key,
+								parsedObj[i].fields.priority.name,
+								parsedObj[i].fields.status.name,
+								parsedObj[i].fields.summary,
+								Date.parse(parsedObj[i].fields.customfield_11102)
+							);
+						roomReservationArray.push(date2Obj);
+					}
+					if(parsedObj[i].fields.customfield_11103 !== null){
+						var date3Obj = 
+							new IssueObject(
+								parsedObj[i].id, 
+								parsedObj[i].key,
+								parsedObj[i].fields.priority.name,
+								parsedObj[i].fields.status.name,
+								parsedObj[i].fields.summary,
+								Date.parse(parsedObj[i].fields.customfield_11103)
+							);
+						roomReservationArray.push(date3Obj);
+					}
+					if(parsedObj[i].fields.customfield_11104!== null){
+						var date4Obj = 
+							new IssueObject(
+								parsedObj[i].id, 
+								parsedObj[i].key,
+								parsedObj[i].fields.priority.name,
+								parsedObj[i].fields.status.name,
+								parsedObj[i].fields.summary,
+								Date.parse(parsedObj[i].fields.customfield_11104)
+							);
+						roomReservationArray.push(date4Obj);
+					}
+					if(parsedObj[i].fields.customfield_11105!== null){
+						var date5Obj = 
+							new IssueObject(
+								parsedObj[i].id, 
+								parsedObj[i].key,
+								parsedObj[i].fields.priority.name,
+								parsedObj[i].fields.status.name,
+								parsedObj[i].fields.summary,
+								Date.parse(parsedObj[i].fields.customfield_11105)
+							);
+						roomReservationArray.push(date5Obj);
+					}
+					if(parsedObj[i].fields.customfield_11106!== null){
+						var date6Obj = 
+							new IssueObject(
+								parsedObj[i].id, 
+								parsedObj[i].key,
+								parsedObj[i].fields.priority.name,
+								parsedObj[i].fields.status.name,
+								parsedObj[i].fields.summary,
+								Date.parse(parsedObj[i].fields.customfield_11106)
+							);
+						roomReservationArray.push(date6Obj);
+					}
+				}
+				var sortedArray = _.orderBy(roomReservationArray, ['reservedDate'], ['asc']);
+				return res.send(sortedArray);
+			} else {
+				console.log(error);
+			}
+		});
+		// request(host+path, auth, function(error, response, body) {   //REFACTOR, DEAR GOD REFACTOR
+		// 	if (!error && response.statusCode === 200) {
+		// 		var requestId = '10103';
+		// 		var roomReservationArray = [];
+		// 		var dateNow = +new Date();
+		// 						// console.log(body);
+		// 		var parsedObj = JSON.parse(body);
+		// 		parsedObj = parsedObj.issues;
+		// 		for(var i =0; i < parsedObj.length; i++) {
+		// 			var issueObj = {};
+		// 			if(parsedObj[i].fields.issuetype.id === requestId) {
+		// 				if(parsedObj[i].fields.customfield_10863 !==null){
+		// 					issueObj.id = parsedObj[i].id;
+		// 					issueObj.key = parsedObj[i].key;
+		// 					issueObj.priority = parsedObj[i].fields.priority.name;
+		// 					issueObj.status = parsedObj[i].fields.status.name;
+		// 					issueObj.type = parsedObj[i].fields.issuetype.name;
+		// 					issueObj.summary = parsedObj[i].fields.summary;
+		// 					issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_10863);
+		// 					roomReservationArray.push(issueObj);
+		// 				}
+		// 				if(parsedObj[i].fields.customfield_11102 !==null){
+		// 					issueObj.id = parsedObj[i].id;
+		// 					issueObj.key = parsedObj[i].key;
+		// 					issueObj.priority = parsedObj[i].fields.priority.name;
+		// 					issueObj.status = parsedObj[i].fields.status.name;
+		// 					issueObj.type = parsedObj[i].fields.issuetype.name;
+		// 					issueObj.summary = parsedObj[i].fields.summary;
+		// 					issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_11102);
+		// 					roomReservationArray.push(issueObj);
+		// 				}
+		// 				if(parsedObj[i].fields.customfield_11103 !==null){
+		// 					issueObj.id = parsedObj[i].id;
+		// 					issueObj.key = parsedObj[i].key;
+		// 					issueObj.priority = parsedObj[i].fields.priority.name;
+		// 					issueObj.status = parsedObj[i].fields.status.name;
+		// 					issueObj.type = parsedObj[i].fields.issuetype.name;
+		// 					issueObj.summary = parsedObj[i].fields.summary;
+		// 					issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_11103);
+		// 					roomReservationArray.push(issueObj);
+		// 				}
+		// 				if(parsedObj[i].fields.customfield_11104 !==null){
+		// 					issueObj.id = parsedObj[i].id;
+		// 					issueObj.key = parsedObj[i].key;
+		// 					issueObj.priority = parsedObj[i].fields.priority.name;
+		// 					issueObj.status = parsedObj[i].fields.status.name;
+		// 					issueObj.type = parsedObj[i].fields.issuetype.name;
+		// 					issueObj.summary = parsedObj[i].fields.summary;
+		// 					issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_11104);
+		// 					roomReservationArray.push(issueObj);
+		// 				}
+		// 				if(parsedObj[i].fields.customfield_11105 !==null){
+		// 					issueObj.id = parsedObj[i].id;
+		// 					issueObj.key = parsedObj[i].key;
+		// 					issueObj.priority = parsedObj[i].fields.priority.name;
+		// 					issueObj.status = parsedObj[i].fields.status.name;
+		// 					issueObj.type = parsedObj[i].fields.issuetype.name;
+		// 					issueObj.summary = parsedObj[i].fields.summary;
+		// 					issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_11105);
+		// 					roomReservationArray.push(issueObj);
+		// 				}
+		// 				if(parsedObj[i].fields.customfield_11106!==null){
+		// 					issueObj.id = parsedObj[i].id;
+		// 					issueObj.key = parsedObj[i].key;
+		// 					issueObj.priority = parsedObj[i].fields.priority.name;
+		// 					issueObj.status = parsedObj[i].fields.status.name;
+		// 					issueObj.type = parsedObj[i].fields.issuetype.name;
+		// 					issueObj.summary = parsedObj[i].fields.summary;
+		// 					issueObj.reservedDate = Date.parse(parsedObj[i].fields.customfield_11106);
+		// 					roomReservationArray.push(issueObj);
+		// 				}
+		// 			}
+		// 		}
+		// 		var filteredArray = [];
+		// 		for(var j=0; j < roomReservationArray.length; j++){
+		// 			if(roomReservationArray[j].reservedDate > dateNow){
+		// 				filteredArray.push(roomReservationArray[j]);
+		// 			}
+		// 		}
+		// 		// console.log('Array Post filter', roomReservationArray);
+
+		// 		filteredArray = _.orderBy(filteredArray, ['reservedDate'], ['asc']);
+		// 		return res.send(filteredArray);
+		// 	} else {
+		// 		console.log(error);
+		// 	}
+		// });
+	});
+
+
+	router.get('/completedIssues', function(req, res) {
+		var completedCountQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20%3D%20Complete';
+
+		request(completedCountQuery, auth, function(error, response, body){
+			if (!error && response.statusCode === 200){
+				var parsedObj =JSON.parse(body);
+				
+				return res.send(parsedObj);
 			} else {
 				console.log(error);
 			}
 		});
 	});
+
+	router.get('/unresolvedIssues', function(req, res) {
+		var unresolvedCountQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20is%20EMPTY';
+
+		request(unresolvedCountQuery, auth, function(error, response, body){
+			if (!error && response.statusCode === 200){
+				var parsedObj =JSON.parse(body);
+				return res.send(parsedObj);
+			} else {
+				console.log(error);
+			}
+		});
+	});
+
+	router.get('/canceledIssues', function(req, res) {
+		var canceledCountQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20%3D%20Canceled';
+
+		request(canceledCountQuery, auth, function(error, response, body){
+			if (!error && response.statusCode === 200){
+				var parsedObj =JSON.parse(body);
+				return res.send(parsedObj);
+			} else {
+				console.log(error);
+			}
+		});
+	});
+
 
 	return router;
 };
