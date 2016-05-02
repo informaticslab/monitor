@@ -122,45 +122,67 @@ module.exports.getRoutes = function() {
 	});
 
 
-	router.get('/completedIssues', function(req, res) {
+	router.get('/issues', function(req, res) {
 		var completedCountQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20%3D%20Complete';
+		var unresolvedCountQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20is%20EMPTY';
+		var canceledCountQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20%3D%20Canceled';
 
+		var chartData = [];
 		request(completedCountQuery, auth, function(error, response, body){
 			if (!error && response.statusCode === 200){
 				var parsedObj =JSON.parse(body);
 				
-				return res.send(parsedObj);
+				chartData.push(parsedObj.total);
+
+				request(unresolvedCountQuery, auth, function(error, response, body){
+					if (!error && response.statusCode === 200){
+						var parsedObj =JSON.parse(body);
+						
+						chartData.push(parsedObj.total);
+						request(canceledCountQuery, auth, function(error, response, body){
+							if (!error && response.statusCode === 200){
+								var parsedObj =JSON.parse(body);
+								chartData.push(parsedObj.total);
+								return res.send(chartData);
+							} else {
+								console.log(error);
+							}
+						});
+					} else {
+						console.log(error);
+					}
+				});
 			} else {
 				console.log(error);
 			}
 		});
 	});
 
-	router.get('/unresolvedIssues', function(req, res) {
-		var unresolvedCountQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20is%20EMPTY';
+	// router.get('/unresolvedIssues', function(req, res) {
+	// 	var unresolvedCountQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20is%20EMPTY';
 
-		request(unresolvedCountQuery, auth, function(error, response, body){
-			if (!error && response.statusCode === 200){
-				var parsedObj =JSON.parse(body);
-				return res.send(parsedObj);
-			} else {
-				console.log(error);
-			}
-		});
-	});
+	// 	request(unresolvedCountQuery, auth, function(error, response, body){
+	// 		if (!error && response.statusCode === 200){
+	// 			var parsedObj =JSON.parse(body);
+	// 			return res.send(parsedObj);
+	// 		} else {
+	// 			console.log(error);
+	// 		}
+	// 	});
+	// });
 
-	router.get('/canceledIssues', function(req, res) {
-		var canceledCountQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20%3D%20Canceled';
+	// router.get('/canceledIssues', function(req, res) {
+	// 	var canceledCountQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20%3D%20Canceled';
 
-		request(canceledCountQuery, auth, function(error, response, body){
-			if (!error && response.statusCode === 200){
-				var parsedObj =JSON.parse(body);
-				return res.send(parsedObj);
-			} else {
-				console.log(error);
-			}
-		});
-	});
+	// 	request(canceledCountQuery, auth, function(error, response, body){
+	// 		if (!error && response.statusCode === 200){
+	// 			var parsedObj =JSON.parse(body);
+	// 			return res.send(parsedObj);
+	// 		} else {
+	// 			console.log(error);
+	// 		}
+	// 	});
+	// });
 
 
 	return router;

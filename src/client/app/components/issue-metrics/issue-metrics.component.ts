@@ -11,27 +11,37 @@ import {JiraReservations, JiraService} from '../../services/jira.service';
 
 export class IssueMetricsComponent {
 	errorMessage: string;
-	completedIssues: JSON;
-	unresolvedIssues: JSON;
-	canceledIssues: JSON;
+	issues: JiraReservations[];
 
 	constructor(
 		private _jiraService: JiraService
 	) { }
 
 	ngOnInit(){
-		
+		this.getCompletedIssues();
+	}
+
+
+	// events
+	chartClicked(e: any) {
+		// console.log(e);
+	}
+
+	chartHovered(e: any) {
+		// console.log(e);
 	}
 
 	private doughnutChartLabels = ['Resolved Tickets', 'Pending Tickets', 'Open Tickets'];
-	private doughnutChartData = [60, 10, 30];
+	private doughnutChartData = this.issues;
 	private doughnutChartType = 'Doughnut';
 
 	getCompletedIssues() {
-		this._jiraService.getCompletedIssues()
+		this._jiraService.getIssues()
 			.subscribe(
-				completedIssues => this.completedIssues = completedIssues,
-				error => this.errorMessage = <any>error
+			issues => this.issues = issues,
+			error => this.errorMessage = <any>error
 			);
 	}
+
+
 }

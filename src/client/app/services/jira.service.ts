@@ -18,24 +18,11 @@ export class JiraService {
 			.catch(this.handleError);
 	}
 
-	getCompletedIssues() {
-		return this._http.get('/api/jira/completedIssues')
+	getIssues() {
+		return this._http.get('/api/jira/issues')
 			.map(this.extractData)
 			.catch(this.handleError);
 	}
-
-	getUnresolvedIssues() {
-		return this._http.get('/api/jira/unresolvedIssues')
-			.map(this.extractData)
-			.catch(this.handleError);
-	}
-
-	getCanceledIssues() {
-		return this._http.get('/api/jira/canceledIssues')
-			.map(this.extractData)
-			.catch(this.handleError);
-	}
-
 
 	private extractData(res: Response) {
 		if (res.status < 200 || res.status >= 300) {

@@ -4,6 +4,7 @@ import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 import {LabReservationComponent} from '../lab-reservations/lab-reservations.component';
 import {WeatherComponent} from '../weather/weather.component';
 import {SiteMonitorComponent} from '../site-monitor/site-monitor.component';
+import {IssueMetricsComponent} from '../issue-metrics/issue-metrics.component';
 // import moment from 'moment/moment';
 
 
@@ -11,7 +12,13 @@ import {SiteMonitorComponent} from '../site-monitor/site-monitor.component';
 	selector: 'dashboard',
 	templateUrl: './app/components/dashboard/dashboard.component.html',
 	styleUrls: ['./app/components/dashboard/dashboard.component.css'],
-	directives: [CHART_DIRECTIVES, WeatherComponent, SiteMonitorComponent,LabReservationComponent]
+	directives: [
+		CHART_DIRECTIVES, 
+		WeatherComponent, 
+		SiteMonitorComponent,
+		LabReservationComponent,
+		IssueMetricsComponent
+	]
 })
 
 export class DashboardComponent {
