@@ -2,7 +2,7 @@ import {Injectable} from 'angular2/core';
 import {Http, Response, Headers, RequestOptions} from 'angular2/http';
 import {Observable} from 'rxjs/Rx';
 
-export class JiraReservations {
+export class JiraReservations {  //Maybe not needed
 	constructor(
 		public report: JSON
 	) { }
@@ -18,12 +18,31 @@ export class JiraService {
 			.catch(this.handleError);
 	}
 
+	getCompletedIssues() {
+		return this._http.get('/api/jira/completedIssues')
+			.map(this.extractData)
+			.catch(this.handleError);
+	}
+
+	getUnresolvedIssues() {
+		return this._http.get('/api/jira/unresolvedIssues')
+			.map(this.extractData)
+			.catch(this.handleError);
+	}
+
+	getCanceledIssues() {
+		return this._http.get('/api/jira/canceledIssues')
+			.map(this.extractData)
+			.catch(this.handleError);
+	}
+
+
 	private extractData(res: Response) {
 		if (res.status < 200 || res.status >= 300) {
 			throw new Error('Bad response status: ' + res.status);
 		}
 		var body = res.json();
-		console.log(body);
+		// console.log(body);
 		return body || {};
 	}
 

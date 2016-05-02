@@ -17,24 +17,10 @@ import {SiteMonitorComponent} from '../site-monitor/site-monitor.component';
 
 export class DashboardComponent {
 	errorMessage: string;
-	// jiraReservations: JiraReservations[];
-
-	constructor(
-		// private _jiraService: JiraService
-	) {}
 
 	ngOnInit() {
 		this.getCurrentTime();
-		// this.getJiraReservations();
 	}
-
-	// getJiraReservations(){
-	// 	this._jiraService.getReservations()
-	// 		.subscribe(
-	// 		jiraReservations => this.jiraReservations = jiraReservations,
-	// 		error => this.errorMessage = <any>error
-	// 		);
-	// }
 
 	d = new Date();
 	monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
