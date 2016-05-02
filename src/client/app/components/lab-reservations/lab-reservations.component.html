@@ -1,0 +1,25 @@
+<div class='widget'>
+  <div class='widget-header'>
+    Lab Reservations
+  </div>
+	<div class='widget-body medium-adjust overflow-adjust'>
+		<div class='table-responsive'>
+      <table class='table'>
+        <thead >
+          <tr class='t-head'>
+            <th class='text-center'>ID</th>
+            <th>Engagement</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='#reservation of jiraReservations'>
+            <td>{{reservation.key}}</td>
+            <td>{{reservation.summary}}</td>
+            <td>{{reservation.reservedDate | date:'short'}}</td>
+          </tr>
+        </tbody>
+      </table>    
+    </div>
+	</div>
+</div>
