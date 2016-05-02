@@ -14,3 +14,7 @@
 	height: 317px;
 	
 }
+
+.overflow-adjust{
+	overflow-y: auto;
+}

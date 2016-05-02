@@ -1,6 +1,7 @@
+<!-- TIME, WEATHER, SERVER TEMP -->
 <div class='row'>
 	<div class='col-md-4'>
-    <div class='row'>
+
   		<div class='widget widget-clock'>
   			<div *ngIf='currentDate' class='widget-body small'>
   				 <div class="clock-wrapper">
@@ -11,38 +12,52 @@
           </div>
   			</div>
   		</div>
+  </div>
+  <div class='col-md-4'>   
+    <div>
+      <weather-widget></weather-widget>
+    </div>
+  </div>
+    <div class='col-md-4'>
+    <div class='widget'>
+      <div class='widget-body small'>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- TIME, WEATHER, SERVER TEMP END -->
+
+<div class='row'>
+  <div class='col-md-8'>
+    <site-monitor></site-monitor>
+  </div>
+  <div class='col-md-4'>
+    <div class='row'>
+      <div>
+        <lab-reservations></lab-reservations>
+      </div>
     </div>
     <div class='row'>
       <div>
-        <weather-widget></weather-widget>
+        <div class='widget'>
+          <div class='widget-header'>
+            Service Desk Tickets (mocked data)
+          </div>
+          <div class='widget-body medium-adjust'>
+            <base-chart class="chart"
+                    [data]="doughnutChartData"
+                    [labels]="doughnutChartLabels"
+                    [chartType]="doughnutChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></base-chart>
+          </div>
+        </div>
       </div>
     </div>
-	</div>
-	<div class='col-md-4'>
-		<div class='widget'>
-      <div class='widget-header'>
-        Server Room Temp
-      </div>
-			<div class='widget-body medium-adjust'>
-			</div>
-		</div>
-	</div>
-	<div class='col-md-4'>
-		<div class='widget'>
-      <div class='widget-header'>
-        Service Desk Tickets (mocked data)
-      </div>
-			<div class='widget-body medium-adjust'>
-				<base-chart class="chart"
-                [data]="doughnutChartData"
-                [labels]="doughnutChartLabels"
-                [chartType]="doughnutChartType"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></base-chart>
-			</div>
-		</div>
-	</div>
+  </div>
 </div>
+
+
 <div class='row'>
 	<div class='col-md-8'>
 		<div class='widget'>
@@ -61,13 +76,6 @@
 			</div>
 		</div>
 	</div>
-	<div class='col-md-4'>
-    <lab-reservations></lab-reservations>
-	</div>
 </div>
 
-<div class='row'>
-	<div class='col-md-12'>
-		<site-monitor></site-monitor>
-	</div>
-</div>
+
