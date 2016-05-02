@@ -1,5 +1,4 @@
 import {Component} from 'angular2/core';
-import {InputText, Schedule} from 'primeng/primeng';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 // import {JiraReservations, JiraService} from '../../services/jira.service';
 import {LabReservationComponent} from '../lab-reservations/lab-reservations.component';
@@ -12,7 +11,7 @@ import {SiteMonitorComponent} from '../site-monitor/site-monitor.component';
 	selector: 'dashboard',
 	templateUrl: './app/components/dashboard/dashboard.component.html',
 	styleUrls: ['./app/components/dashboard/dashboard.component.css'],
-	directives: [InputText, CHART_DIRECTIVES, WeatherComponent, SiteMonitorComponent,LabReservationComponent]
+	directives: [CHART_DIRECTIVES, WeatherComponent, SiteMonitorComponent,LabReservationComponent]
 })
 
 export class DashboardComponent {
