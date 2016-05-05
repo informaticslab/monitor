@@ -12,7 +12,7 @@ module.exports.getRoutes = function() {
 			if(!error) {
 				res.send(body);
 			} else {
-				console.log(error);
+				console.log('sensor error', error);
 			}
 		});
 	});

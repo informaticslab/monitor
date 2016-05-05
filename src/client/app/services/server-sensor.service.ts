@@ -28,7 +28,6 @@ export class ServerSensorService {
 			throw new Error('Bad response status: ' + res.status);
 		}
 		var body = res.json();
-		console.log(body);
 		return body || {};
 	}
 

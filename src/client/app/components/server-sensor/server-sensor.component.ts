@@ -16,18 +16,18 @@ export class ServerSensorComponent {
 	) {}
 
 	ngOnInit() {
-		// this.getServerSensorData();
-		this.getSensorDataOnInterval();
+		this.getServerSensorData();
 	}
 
 	getServerSensorData() {
-		this._serverSensorService.getSensorData()
-			.subscribe(
-			sensorData => this.sensorData = sensorData,
-			error => this.errorMessage = <any>error);
+		setInterval(() => {
+			this._serverSensorService.getSensorData()
+				.subscribe(
+				sensorData => this.sensorData = sensorData,
+				error => this.errorMessage = <any>error);
+		},
+			5000)
 	}
 
-	getSensorDataOnInterval() {
-		setInterval(this.getServerSensorData(), 100000);
-	}
+	
 }
