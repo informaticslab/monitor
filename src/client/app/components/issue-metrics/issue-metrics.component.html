@@ -1,12 +1,12 @@
-<div class='widget' *ngIf='issues'>
+<div class='widget'>
   <div class='widget-header'>
-    Service Desk Tickets (mocked data)
+    Service Desk Tickets
   </div>
   <div class='widget-body medium-adjust'>
     <base-chart class="chart"
             [data]="doughnutChartData"
             [labels]="doughnutChartLabels"
-            [chartType]="doughnutChartData"
+            [chartType]="doughnutChartType"
             (chartHover)="chartHovered($event)"
             (chartClick)="chartClicked($event)"></base-chart>
   </div>

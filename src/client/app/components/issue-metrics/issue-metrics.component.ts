@@ -18,7 +18,7 @@ export class IssueMetricsComponent {
 	) { }
 
 	ngOnInit(){
-		this.getCompletedIssues();
+		// this.getCompletedIssues();
 	}
 
 
@@ -31,8 +31,8 @@ export class IssueMetricsComponent {
 		// console.log(e);
 	}
 
-	private doughnutChartLabels = ['Resolved Tickets', 'Pending Tickets', 'Open Tickets'];
-	private doughnutChartData = this.issues;
+	private doughnutChartLabels = ['Completed', 'Unresolved', 'Canceled'];
+	private doughnutChartData = [187,14,2];
 	private doughnutChartType = 'Doughnut';
 
 	getCompletedIssues() {
