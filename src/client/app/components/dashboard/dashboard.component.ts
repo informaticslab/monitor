@@ -5,6 +5,7 @@ import {LabReservationComponent} from '../lab-reservations/lab-reservations.comp
 import {WeatherComponent} from '../weather/weather.component';
 import {SiteMonitorComponent} from '../site-monitor/site-monitor.component';
 import {IssueMetricsComponent} from '../issue-metrics/issue-metrics.component';
+import {ServerSensorComponent} from '../server-sensor/server-sensor.component';
 // import moment from 'moment/moment';
 
 
@@ -17,7 +18,8 @@ import {IssueMetricsComponent} from '../issue-metrics/issue-metrics.component';
 		WeatherComponent, 
 		SiteMonitorComponent,
 		LabReservationComponent,
-		IssueMetricsComponent
+		IssueMetricsComponent,
+		ServerSensorComponent
 	]
 })
 

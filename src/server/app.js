@@ -8,6 +8,7 @@ var express = require('express'),
 	path = require('path'),
 	reportsApi = require('./api/reports'),
 	jiraApi = require('./api/jira'),
+	sensorApi = require('./api/sensor'),
 	http = require('http');
 
 var store = storeFactory.getStorageInstance('development');
@@ -28,6 +29,7 @@ function serveIndex(req, res) {
 
 
 app.use(compress());
+app.use('/api/sensor', sensorApi.getRoutes());
 app.use('/api/jira', jiraApi.getRoutes());
 app.use('/api/report', reportsApi.getRoutes(store));
 app.use('/api', servicesApi.getRoutes(store));
