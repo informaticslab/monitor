@@ -1,11 +1,11 @@
-<div *ngIf='weatherReport' class='widget widget-weather'>
+<div *ngIf='weatherReport' class='widget widget-weather' [style.background-color]='getStyle()'>
   <div class='widget-body small-adjust'>
     
     <div class='col-md-6'>
-      <h1>Atlanta</h1>
+      <h2>{{weatherReport.current_observation.display_location.city}}</h2>
     </div>
     <div class='col-md-6'>
-      <div class='right'><h2>{{weatherReport.current_observation.temp_f}} &deg;</h2></div>
+      <div class='right'><h1>{{weatherReport.current_observation.temp_f}} &deg;</h1></div>
       <div class='right'>
         <img src='{{weatherReport.current_observation.icon_url}}'>
         {{weatherReport.current_observation.weather}}

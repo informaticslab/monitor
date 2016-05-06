@@ -4,7 +4,8 @@ import {Observable} from 'rxjs/Rx';
 
 export class WeatherReport {
 	constructor(
-		public report: JSON
+		public response: JSON,
+		public current_observation: JSON
 	) {}
 }
 
@@ -13,7 +14,9 @@ export class WeatherService {
 	constructor(private _http: Http) { }
 
 	getCurrentConditions() {
-		let query = 'http://api.wunderground.com/api/ce3119b0728c4a4c/conditions/q/GA/Atlanta.json'
+		let state = 'GA';
+		let city = 'Atlanta';
+		let query = 'http://api.wunderground.com/api/ce3119b0728c4a4c/conditions/q/'+state+'/'+city+'.json'
 		return this._http.get(query)
 			.map(this.extractData)
 			.catch(this.handleError);
@@ -24,6 +27,7 @@ export class WeatherService {
 			throw new Error('Bad response status: ' + res.status);
 		}
 		var body = res.json();
+		body = <WeatherReport>body;
 		// console.log(body);
 		return body || {};
 	}

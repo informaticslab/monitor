@@ -1,3 +1,16 @@
 .widget-server{
 	color:white;
+	background: #009688;
+}
+
+.center {
+	text-align: center;
+}
+
+.right{
+	text-align: right;
+}
+
+.small-adjust {
+	height:150px;
 }

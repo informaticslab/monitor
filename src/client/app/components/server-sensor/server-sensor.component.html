@@ -1,6 +1,11 @@
 <div class='widget widget-server' >
-  <div class='widget-body small' *ngIf='sensorData'>
+  <!-- <div class='widget-body small' *ngIf='sensorData'>
   	<p>Server Room Temperature: {{sensorData.sensorData.temperature}}&deg;C </p>
   	<p>Humidity: {{sensorData.sensorData.humidity}}%</p>
+  </div> -->
+  <div class='widget-body small-adjust' >
+  	<h5>Server Room (Mocked)</h5>
+  	<h1 class='right'>{{mockTempF}}&deg;C </h1>
+  	<p class='right'>Humidity: {{mockHumidity}}%</p>
   </div>
 </div>
