@@ -6,6 +6,7 @@ import {WeatherComponent} from '../weather/weather.component';
 import {SiteMonitorComponent} from '../site-monitor/site-monitor.component';
 import {IssueMetricsComponent} from '../issue-metrics/issue-metrics.component';
 import {ServerSensorComponent} from '../server-sensor/server-sensor.component';
+import {UnresolvedIssuesComponent} from '../unresolved-issues/unresolved-issues.component';
 // import moment from 'moment/moment';
 
 
@@ -19,7 +20,8 @@ import {ServerSensorComponent} from '../server-sensor/server-sensor.component';
 		SiteMonitorComponent,
 		LabReservationComponent,
 		IssueMetricsComponent,
-		ServerSensorComponent
+		ServerSensorComponent,
+		UnresolvedIssuesComponent
 	]
 })
 
@@ -44,7 +46,8 @@ export class DashboardComponent {
 
 			var ampm = hours <= 11 ? 'am' : 'pm';
 			var strTime = [hours % 12,
-				(minutes < 10 ? "0" + minutes : minutes)
+				(minutes < 10 ? "0" + minutes : minutes),
+				(s < 10 ? "0" + s : s)
 			].join(':') + ampm;
 
 			this.currentTime = strTime;

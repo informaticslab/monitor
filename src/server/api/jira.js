@@ -22,6 +22,14 @@ module.exports.getRoutes = function() {
 		this.reservedDate = reservedDate;
 	}
 
+	function UnresolvedObject(id, key, summary, assignee, creator) {
+		this.id = id;
+		this.key = key;
+		this.summary = summary;
+		this.assignee = assignee;
+		this.creator = creator;
+	}
+
 	router.get('/reservations', function(req, res) {
 		var reservationsQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%20IIUSD%20AND%20issuetype%20%3D%20%22Room%20Request%22%20AND%20status%20%3D%20%22Room%20Reserved%22';
 
@@ -154,6 +162,36 @@ module.exports.getRoutes = function() {
 				});
 			} else {
 				console.log(error);
+			}
+		});
+	});
+
+	router.get('/unresolved', function(req, res){
+		var unresolvedQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%20IIUSD%20AND%20issuetype%20in%20standardIssueTypes()%20AND%20resolution%20%3D%20Unresolved';
+
+		request(unresolvedQuery, auth, function(error, response, body) {
+			if(!error && response.statusCode === 200) {
+				var parsedObj = JSON.parse(body);
+				var unresolvedArray = [];
+
+				parsedObj = parsedObj.issues;
+
+				for(var i = 0; i< parsedObj.length; i++){
+					if(parsedObj[i].fields.assignee !== null && parsedObj[i].fields.creator !== null){
+						var composedObj = new UnresolvedObject(
+						parsedObj[i].id,
+						parsedObj[i].key,
+						parsedObj[i].fields.summary,
+						parsedObj[i].fields.assignee.displayName,
+						parsedObj[i].fields.creator.displayName
+						);
+						unresolvedArray.push(composedObj);
+					}
+				}
+				res.send(unresolvedArray);
+			} else {
+				console.log(error);
+				res.send(error);
 			}
 		});
 	});

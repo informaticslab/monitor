@@ -24,6 +24,12 @@ export class JiraService {
 			.catch(this.handleError);
 	}
 
+	getUnresolved() {
+		return this._http.get('/api/jira/unresolved')
+			.map(this.extractData)
+			.catch(this.handleError);
+	}
+
 	private extractData(res: Response) {
 		if (res.status < 200 || res.status >= 300) {
 			throw new Error('Bad response status: ' + res.status);
