@@ -57,8 +57,7 @@ export class DashboardComponent {
 
 	// Will need to pull this out think
 	private lineChartData: Array<any> = [
-		[65, 59, 80, 81, 56, 55, 40],
-		[28, 48, 40, 19, 86, 27, 90]
+		[65, 59, 80, 81, 56, 55, 40]
 	];
 	private lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 	private lineChartSeries: Array<any> = ['Series A', 'Series B', 'Series C'];

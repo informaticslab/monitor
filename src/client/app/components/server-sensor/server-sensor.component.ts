@@ -16,7 +16,7 @@ export class ServerSensorComponent {
 	) {}
 
 	ngOnInit() {
-		// this.getServerSensorData();
+		this.getServerSensorData();
 	}
 
 	getServerSensorData() {
@@ -29,6 +29,16 @@ export class ServerSensorComponent {
 			5000)
 	}
 
-	private mockTempF = 76.3;
-	private mockHumidity = 39.5;
+	setStyle() {
+		if (this.sensorData.sensorData.temperature <= 80) {
+			return '#009688';
+		} else if (this.sensorData.sensorData.temperature >= 81 && this.sensorData.sensorData.temperature < 85) {
+			return '#EF6C00';
+		} else {
+			return '#C62828';
+		}
+	}
+
+	// private mockTempF = 76.3;
+	// private mockHumidity = 39.5;
 }
