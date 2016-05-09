@@ -12,7 +12,7 @@
             <div class='widget-body widget-success'>
               <div class='center'>
                 <h4><i class='fa fa-arrow-up'></i> {{report.service.name}}</h4>
-                <div class='clearfix'>Host: {{report.service.host}}</div>
+                <div class='clearfix'>Host: {{report.service.host | ellipsis: 4}}</div>
                 <div class='clearfix'>Uptime: {{report.status.last24Hours.uptime}}%</div>
               </div>
             </div> 
@@ -24,7 +24,7 @@
             <div class='widget-body widget-danger'>
               <div class='center'>
                 <h4><i class='fa fa-exclamation-triangle fa-lg'></i> {{report.service.name}} </h4>
-                <div class='clearfix'>Host: {{report.service.host}}</div>
+                <div class='clearfix'>Host: {{report.service.host | ellipsis: 4}}</div>
                 <div class='clearfix'>Down since: {{report.status.currentOutage.outageDuration}}</div>
               </div>
             </div> 

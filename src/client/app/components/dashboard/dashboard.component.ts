@@ -7,6 +7,7 @@ import {SiteMonitorComponent} from '../site-monitor/site-monitor.component';
 import {IssueMetricsComponent} from '../issue-metrics/issue-metrics.component';
 import {ServerSensorComponent} from '../server-sensor/server-sensor.component';
 import {UnresolvedIssuesComponent} from '../unresolved-issues/unresolved-issues.component';
+import {EllipsisPipe} from '../../pipes/ellipsis.pipe';
 // import moment from 'moment/moment';
 
 
@@ -22,7 +23,8 @@ import {UnresolvedIssuesComponent} from '../unresolved-issues/unresolved-issues.
 		IssueMetricsComponent,
 		ServerSensorComponent,
 		UnresolvedIssuesComponent
-	]
+	],
+	pipes: [EllipsisPipe]
 })
 
 export class DashboardComponent {

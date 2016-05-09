@@ -18,7 +18,7 @@ export class IssueMetricsComponent {
 	) { }
 
 	ngOnInit(){
-		// this.getCompletedIssues();
+		this.getIssuesMetrics();
 	}
 
 
@@ -35,7 +35,7 @@ export class IssueMetricsComponent {
 	private doughnutChartData = [187,14,2];
 	private doughnutChartType = 'Doughnut';
 
-	getCompletedIssues() {
+	getIssuesMetrics() {
 		this._jiraService.getIssues()
 			.subscribe(
 			issues => this.issues = issues,

@@ -3,8 +3,8 @@
     Service Desk Tickets
   </div>
   <div class='widget-body medium-adjust'>
-    <base-chart class="chart"
-            [data]="doughnutChartData"
+    <base-chart class="chart" *ngIf='issues'
+            [data]="issues"
             [labels]="doughnutChartLabels"
             [chartType]="doughnutChartType"
             (chartHover)="chartHovered($event)"

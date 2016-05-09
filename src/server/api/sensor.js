@@ -9,7 +9,7 @@ module.exports.getRoutes = function() {
 		var url ='https://cloud.arest.io/l4dgx9/sensorData';
 
 		request(url, function(error, response, body) {
-			if(!error) {
+			if(!error && response.statusCode === 200) {
 				var parsedObj = JSON.parse(body);
 				res.send(parsedObj.sensorData);
 			} else {

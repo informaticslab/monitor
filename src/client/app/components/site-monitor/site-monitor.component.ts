@@ -1,10 +1,12 @@
 import {Component} from 'angular2/core';
 import {Report, ReportService} from '../../services/report.service';
+import {EllipsisPipe} from '../../pipes/ellipsis.pipe';
 
 @Component({
 	selector: 'site-monitor',
-	templateUrl: '/app/components/site-monitor/site-monitor.component.html',
-	styleUrls: ['./app/components/site-monitor/site-monitor.component.css']
+	templateUrl: './app/components/site-monitor/site-monitor.component.html',
+	styleUrls: ['./app/components/site-monitor/site-monitor.component.css'],
+	pipes: [EllipsisPipe]
 })
 
 export class SiteMonitorComponent {

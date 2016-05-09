@@ -20,13 +20,13 @@ export class ServerSensorComponent {
 	}
 
 	getServerSensorData() {
-		setInterval(() => {
+		// setInterval(() => {
 			this._serverSensorService.getSensorData()
 				.subscribe(
 				sensorData => this.sensorData = sensorData,
 				error => this.errorMessage = <any>error);
-		},
-			5000)
+		// },
+			// 5000)
 	}
 
 	setStyle() {
