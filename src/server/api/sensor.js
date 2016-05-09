@@ -10,7 +10,8 @@ module.exports.getRoutes = function() {
 
 		request(url, function(error, response, body) {
 			if(!error) {
-				res.send(body);
+				var parsedObj = JSON.parse(body);
+				res.send(parsedObj.sensorData);
 			} else {
 				console.log('sensor error', error);
 			}

@@ -9,7 +9,7 @@ import {SensorData, ServerSensorService} from '../../services/server-sensor.serv
 
 export class ServerSensorComponent {
 	errorMessage: string;
-	sensorData: JSON;
+	sensorData: SensorData;
 
 	constructor(
 		private _serverSensorService: ServerSensorService
@@ -30,9 +30,9 @@ export class ServerSensorComponent {
 	}
 
 	setStyle() {
-		if (this.sensorData.sensorData.temperature <= 80) {
+		if (this.sensorData.temperature <= 80) {
 			return '#009688';
-		} else if (this.sensorData.sensorData.temperature >= 81 && this.sensorData.sensorData.temperature < 85) {
+		} else if (this.sensorData.temperature >= 81 && this.sensorData.temperature < 85) {
 			return '#EF6C00';
 		} else {
 			return '#C62828';

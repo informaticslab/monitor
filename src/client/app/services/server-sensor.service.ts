@@ -4,10 +4,10 @@ import {Observable} from 'rxjs/Rx';
 
 export class SensorData {
 	constructor(
-		public id: number,
-		public name: string,
-		public connected: boolean,
-		public data: JSON
+		public errors: number,
+		public isValid: boolean,
+		public temperature: number,
+		public humidity: number
 	){}
 }
 
