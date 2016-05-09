@@ -28,10 +28,10 @@ export class WeatherComponent {
 			);
 	}
 
-	getStyle() {
-		if (this.weatherReport.current_observation.temp_f <= 70) {
+	setStyle() {
+		if (this.weatherReport.current_observation.temp_f <= 72) {
 			return '#00BCD4';
-		} else if (this.weatherReport.current_observation.temp_f >= 75 && this.weatherReport.current_observation.temp_f < 85)  {
+		} else if (this.weatherReport.current_observation.temp_f >= 72 && this.weatherReport.current_observation.temp_f < 85)  {
 			return '#EF6C00';
 		} else {
 			return '#C62828';
