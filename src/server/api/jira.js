@@ -31,7 +31,7 @@ module.exports.getRoutes = function() {
 	}
 
 	router.get('/reservations', function(req, res) {
-		var reservationsQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%20IIUSD%20AND%20issuetype%20%3D%20%22Room%20Request%22%20AND%20status%20%3D%20%22Room%20Reserved%22';
+		var reservationsQuery = 'http://jira.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%20IIUSD%20AND%20issuetype%20%3D%20%22Room%20Request%22%20AND%20status%20%3D%20%22Room%20Reserved%22';
 
 		request(reservationsQuery, auth, function(error,response, body) {
 			if(!error && response.statusCode === 200) {
@@ -131,9 +131,9 @@ module.exports.getRoutes = function() {
 
 
 	router.get('/issues', function(req, res) {
-		var completedCountQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20%3D%20Complete';
-		var unresolvedCountQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20is%20EMPTY';
-		var canceledCountQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20%3D%20Canceled';
+		var completedCountQuery = 'http://jira.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20%3D%20Complete';
+		var unresolvedCountQuery = 'http://jira.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20is%20EMPTY';
+		var canceledCountQuery = 'http://jira.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20%3D%20Canceled';
 
 		var chartData = [];
 		request(completedCountQuery, auth, function(error, response, body){
@@ -167,7 +167,7 @@ module.exports.getRoutes = function() {
 	});
 
 	router.get('/unresolved', function(req, res){
-		var unresolvedQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%20IIUSD%20AND%20issuetype%20in%20standardIssueTypes()%20AND%20resolution%20%3D%20Unresolved';
+		var unresolvedQuery = 'http://jira.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%20IIUSD%20AND%20issuetype%20in%20standardIssueTypes()%20AND%20resolution%20%3D%20Unresolved';
 
 		request(unresolvedQuery, auth, function(error, response, body) {
 			if(!error && response.statusCode === 200) {
@@ -197,7 +197,7 @@ module.exports.getRoutes = function() {
 	});
 
 	// router.get('/unresolvedIssues', function(req, res) {
-	// 	var unresolvedCountQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20is%20EMPTY';
+	// 	var unresolvedCountQuery = 'http://jira.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20is%20EMPTY';
 
 	// 	request(unresolvedCountQuery, auth, function(error, response, body){
 	// 		if (!error && response.statusCode === 200){
@@ -210,7 +210,7 @@ module.exports.getRoutes = function() {
 	// });
 
 	// router.get('/canceledIssues', function(req, res) {
-	// 	var canceledCountQuery = 'http://jiradev.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20%3D%20Canceled';
+	// 	var canceledCountQuery = 'http://jira.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20%3D%20Canceled';
 
 	// 	request(canceledCountQuery, auth, function(error, response, body){
 	// 		if (!error && response.statusCode === 200){
