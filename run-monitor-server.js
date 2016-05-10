@@ -12,6 +12,8 @@ var RETURN_CODES = {
   GENERIC_ERROR: 2
 };
 
+var startMonitorTime = +new Date();
+
 var seedServices = [
 		{
 			name: 'phiresearchlab.org',
@@ -21,7 +23,8 @@ var seedServices = [
 			port: '80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host: 'IIU'
+			host: 'IIU',
+			startMonitorTime: startMonitorTime
 		},
 		{
 			name: 'App Lab',
@@ -31,7 +34,8 @@ var seedServices = [
 			port: '80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host:'IIU'
+			host:'IIU',
+			startMonitorTime: startMonitorTime
 		},
 		{
 			name: 'App Lab Dev',
@@ -41,7 +45,8 @@ var seedServices = [
 			port: '80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host:'IIU'
+			host:'IIU',
+			startMonitorTime: startMonitorTime
 
 		},
 		{
@@ -52,7 +57,8 @@ var seedServices = [
 			port: '80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host:'IIU'
+			host:'IIU',
+			startMonitorTime: startMonitorTime
 		},
 		{
 			name: 'Confluence',
@@ -62,7 +68,8 @@ var seedServices = [
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host: 'IIU'
+			host: 'IIU',
+			startMonitorTime: startMonitorTime
 		},
 		{
 			name: 'View',
@@ -72,7 +79,8 @@ var seedServices = [
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host: 'IIU'
+			host: 'IIU',
+			startMonitorTime: startMonitorTime
 		}, 
 		{
 			name: 'Edemo',
@@ -82,7 +90,8 @@ var seedServices = [
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host: 'IIU'
+			host: 'IIU',
+			startMonitorTime: startMonitorTime
 		},
 		{
 			name: 'Apollo',
@@ -92,7 +101,8 @@ var seedServices = [
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host: 'AWS'
+			host: 'AWS',
+			startMonitorTime: startMonitorTime
 		},
 		{
 			name: 'Jupiter',
@@ -102,7 +112,8 @@ var seedServices = [
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host: 'AWS'
+			host: 'AWS',
+			startMonitorTime: startMonitorTime
 		},
 		{
 			name: 'Anubis Dev',
@@ -112,7 +123,8 @@ var seedServices = [
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host: 'AWS'
+			host: 'AWS',
+			startMonitorTime: startMonitorTime
 		},
 		{
 			name: 'MMWR COTW',
@@ -122,7 +134,8 @@ var seedServices = [
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host: 'AWS'
+			host: 'AWS',
+			startMonitorTime: startMonitorTime
 		},
 		{
 			name: 'CommSphere',
@@ -132,7 +145,8 @@ var seedServices = [
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host: 'AWS'
+			host: 'AWS',
+			startMonitorTime: startMonitorTime
 		},
 		{
 			name: 'Predict',
@@ -142,7 +156,8 @@ var seedServices = [
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host: 'IIU'
+			host: 'IIU',
+			startMonitorTime: startMonitorTime
 		},
 		{
 			name: 'CRA',
@@ -152,7 +167,8 @@ var seedServices = [
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host: 'IIU'
+			host: 'IIU',
+			startMonitorTime: startMonitorTime
 		}, 
 		{
 			name: 'NHSN',
@@ -162,7 +178,8 @@ var seedServices = [
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host: 'IIU'
+			host: 'IIU',
+			startMonitorTime: startMonitorTime
 		},
 		{
 			name: 'NHSN Test',
@@ -172,7 +189,8 @@ var seedServices = [
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host:'IIU'
+			host:'IIU',
+			startMonitorTime: startMonitorTime
 		},
 		{
 			name: 'IMATS',
@@ -182,7 +200,8 @@ var seedServices = [
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host:'IIU'
+			host:'IIU',
+			startMonitorTime: startMonitorTime
 		},
 		{
 			name: 'DHIS2',
@@ -192,7 +211,8 @@ var seedServices = [
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host:'IIU'
+			host:'IIU',
+			startMonitorTime: startMonitorTime
 		},
 		{
 			name: 'Open MRS',
@@ -202,7 +222,8 @@ var seedServices = [
 			port:'80',
 			timeout: 10000,
 			warningThreshold: 3000,
-			host: 'IIU'
+			host: 'IIU',
+			startMonitorTime: startMonitorTime
 		}
 
 ];
