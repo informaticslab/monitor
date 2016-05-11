@@ -16,9 +16,9 @@ import {DashboardComponent} from '../dashboard/dashboard.component';
 export class HomeComponent {
 	mobileView: number = 992;
 	toggle: boolean = false;
-	;
+
 	constructor() {
-		this.attachEvents();
+		// this.attachEvents();
 	}
 
 	attachEvents() {
