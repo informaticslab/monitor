@@ -1,5 +1,6 @@
 var express = require('express'),
-	ReporterFactory = require('./../../../lib/reporter');
+	ReporterFactory = require('./../../../lib/reporter'),
+	_ = require('lodash');
 
 module.exports.getRoutes = function(store) {
 	if(!store) {
@@ -45,7 +46,8 @@ module.exports.getRoutes = function(store) {
 				console.error(err);
 				return res.status(500).json({error: err});
 			}
-			res.json(serviceReports);
+			var sortedReports = _.orderBy(serviceReports, ['service.name'], ['asc']);
+			res.json(sortedReports);
 		});
 	});
 

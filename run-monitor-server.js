@@ -16,7 +16,7 @@ var startMonitorTime = +new Date();
 
 var seedServices = [
 		{
-			name: 'phiresearchlab.org',
+			name: 'Phiresearchlab.org',
 			interval: 30 * 1000,
 			failureInterval: 20 * 1000,
 			url: 'http://www.phiresearchlab.org',
