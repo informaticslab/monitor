@@ -32,8 +32,9 @@ export class IssueMetricsComponent {
 	}
 
 	private doughnutChartLabels = ['Completed', 'Unresolved', 'Canceled'];
-	private doughnutChartData = [187,14,2];
 	private doughnutChartType = 'Doughnut';
+	private doughnutChartLegend:boolean = false;
+	
 
 	getIssuesMetrics() {
 		this._jiraService.getIssues()
