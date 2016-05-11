@@ -13,3 +13,13 @@
 .small-adjust {
 	height:150px;
 }
+
+.title {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.content {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
