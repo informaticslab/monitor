@@ -16,7 +16,8 @@ export class WeatherService {
 	getCurrentConditions() {
 		let state = 'GA';
 		let city = 'Atlanta';
-		let query = 'http://api.wunderground.com/api/ce3119b0728c4a4c/conditions/q/'+state+'/'+city+'.json'
+		let zip = 'zmw:30345.1.99999';
+		let query = 'http://api.wunderground.com/api/ce3119b0728c4a4c/conditions/q/'+state+'/'+city+'/'+zip+'.json'
 		return this._http.get(query)
 			.map(this.extractData)
 			.catch(this.handleError);

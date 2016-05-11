@@ -19,14 +19,17 @@ export class ServerSensorComponent {
 		this.getServerSensorData();
 	}
 
+	ngAfterContentInit() {
+		setInterval(() => {
+			this.getServerSensorData();
+		}, 60000);
+	}
+
 	getServerSensorData() {
-		// setInterval(() => {
 			this._serverSensorService.getSensorData()
 				.subscribe(
 				sensorData => this.sensorData = sensorData,
 				error => this.errorMessage = <any>error);
-		// },
-			// 5000)
 	}
 
 	setStyle() {
@@ -39,6 +42,4 @@ export class ServerSensorComponent {
 		}
 	}
 
-	// private mockTempF = 76.3;
-	// private mockHumidity = 39.5;
 }

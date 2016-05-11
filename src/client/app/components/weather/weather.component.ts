@@ -20,6 +20,12 @@ export class WeatherComponent {
 		this.getCurrentWeather();
 	}
 
+	ngAfterContentInit() {
+		setInterval(() => {
+			this.getCurrentWeather();
+		}, 90000);
+	}
+
 	getCurrentWeather() {
 		this._weatherService.getCurrentConditions()
 			.subscribe(

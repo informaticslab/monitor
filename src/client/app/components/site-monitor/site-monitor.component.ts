@@ -1,22 +1,27 @@
 import {Component} from 'angular2/core';
 import {Report, ReportService} from '../../services/report.service';
-import {EllipsisPipe} from '../../pipes/ellipsis.pipe';
+
 
 @Component({
 	selector: 'site-monitor',
 	templateUrl: './app/components/site-monitor/site-monitor.component.html',
-	styleUrls: ['./app/components/site-monitor/site-monitor.component.css'],
-	pipes: [EllipsisPipe]
+	styleUrls: ['./app/components/site-monitor/site-monitor.component.css']
 })
 
 export class SiteMonitorComponent {
 	errorMessage: string;
 	reports: Report[];
+	refreshedTimestamp: number;
 
 	constructor(private _reportService: ReportService) {}
 
 	ngOnInit() {
 		this.getReports();
+		// this.refreshedTimestamp = +new Date();
+	}
+
+	ngAfterContentInit() {
+		this.autoRefresh();
 	}
 
 	getReports() {
@@ -26,4 +31,12 @@ export class SiteMonitorComponent {
 				error => this.errorMessage = <any>error
 			);
 	}
+
+	autoRefresh() {
+		setInterval(() => {
+			this.getReports();
+			// this.refreshedTimestamp = +new Date()
+		}, 90000);
+	}
+
 }
