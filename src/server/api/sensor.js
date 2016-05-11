@@ -6,7 +6,7 @@ module.exports.getRoutes = function() {
 	var router = express.Router();
 
 	router.get('/data', function(req, res){
-		var url ='https://cloud.arest.io/l4dgx9/sensorData';
+		var url ='https://cloud.arest.io/l4dgx934sdfxc35ujnbmuk578/sensorData';
 
 		request(url, function(error, response, body) {
 			if(!error && response.statusCode === 200) {
