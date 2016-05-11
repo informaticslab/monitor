@@ -1,6 +1,6 @@
 {
   "name": "monitor",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Monitors readiness of the IIU's systems.",
   "main": "app.js",
   "scripts": {
@@ -17,8 +17,18 @@
   },
   "homepage": "https://github.com/informaticslab/monitor#readme",
   "dependencies": {
-    "angular2": "2.0.0-beta.15",
+    "@angular/common":  "2.0.0-rc.1",
+    "@angular/compiler":  "2.0.0-rc.1",
+    "@angular/core":  "2.0.0-rc.1",
+    "@angular/http":  "2.0.0-rc.1",
+    "@angular/platform-browser":  "2.0.0-rc.1",
+    "@angular/platform-browser-dynamic":  "2.0.0-rc.1",
+    "@angular/router":  "2.0.0-rc.1",
+    "@angular/router-deprecated":  "2.0.0-rc.1",
+    "@angular/upgrade":  "2.0.0-rc.1",
+
     "angular2-moment": "^0.7.0",
+    "angular2-in-memory-web-api": "0.0.7",
     "async": "^2.0.0-rc.3",
     "body-parser": "^1.15.0",
     "bootstrap": "^3.3.6",
@@ -40,16 +50,16 @@
     "primeng": "^1.0.0-beta.3",
     "primeui": "^4.1.8",
     "redis": "^2.6.0-2",
-    "reflect-metadata": "0.1.2",
+    "reflect-metadata": "0.1.3",
     "request": "^2.69.0",
-    "rxjs": "5.0.0-beta.2",
+    "rxjs": "5.0.0-beta.6",
     "shortid": "^2.2.6",
     "stream-spigot": "^3.0.5",
-    "systemjs": "0.19.25",
+    "systemjs": "0.19.27",
     "timestream-aggregates": "^0.1.7",
     "validator": "^5.2.0",
     "wunderground": "0.0.0",
-    "zone.js": "0.6.10"
+    "zone.js": "0.6.12"
   },
   "devDependencies": {
     "assert": "^1.3.0",
@@ -72,8 +82,8 @@
     "should": "^8.3.0",
     "sinon": "^1.17.3",
     "supertest": "^1.2.0",
-    "typescript": "^1.8.9",
-    "typings": "^0.7.12",
+    "typescript": "^1.8.10",
+    "typings": "^0.8.1",
     "yargs": "^4.3.2"
   }
 }
