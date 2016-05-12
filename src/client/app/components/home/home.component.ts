@@ -1,7 +1,6 @@
-import {Component, ViewEncapsulation} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {TopnavComponent} from '../topnav/topnav.component';
-// import {SidebarComponent} from '../sidebar/sidebar.component';
 import {DashboardComponent} from '../dashboard/dashboard.component';
 
 @Component({

@@ -1,8 +1,7 @@
-import {Component} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
-import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
-// import {Dropdown, DropdownToggle} from 'ng2-bootstrap/ng2-bootstrap';
-// import {DROPDOWN_DIRECTIVES, ACCORDION_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import {Component} from '@angular/core';
+import {CORE_DIRECTIVES} from '@angular/common';
+import {RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+
 
 @Component({
     selector: 'topnav',

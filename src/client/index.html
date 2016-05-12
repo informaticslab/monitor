@@ -7,22 +7,20 @@
 		<!-- Load Libraries -->
 		<!-- IE required polyfills, in exact order -->
 		<script src="node_modules/es6-shim/es6-shim.min.js"></script>
-	    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
-	    <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>   
-	    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+	    <!-- <script src="node_modules/systemjs/dist/system-polyfills.js"></script> -->
+	    <!-- <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>    -->
+	    <!-- <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script> -->
+	    <script src="node_modules/zone.js/dist/zone.js"></script>
+	    <script src="node_modules/reflect-metadata/Reflect.js"></script>
 	    <script src="node_modules/systemjs/dist/system.src.js"></script>
-	    <script src="node_modules/chart.js/Chart.min.js"></script>
-	    <!-- <script src="node_modules/moment/moment.js"></script> -->
-	    
-	    <script src="node_modules/primeui/primeui-ng-all.min.js"></script>
 
+	    <script src="systemjs.config.js"></script>
+
+
+	    <!-- Non-angular libraries -->
+	    <!-- <script src="node_modules/moment/moment.js"></script> -->
 	    <script src="bower_components/jquery/dist/jquery.js"></script>
 		<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-
-
-
-		<link rel="stylesheet" type="text/css" href="node_modules/primeui/themes/delta/theme.css" />
-		<link rel="stylesheet" type="text/css" href="node_modules/primeui/primeui-ng-all.css" />
 	    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
 	    <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.css">
 	    <link rel="stylesheet" type="text/css" href="./assets/css/rdash.css">
@@ -32,31 +30,13 @@
 	    <!-- <link rel="stylesheet" href="assets/main.css"/> -->
 	    <!-- Configure SystemJS -->
 	    <script>
-	    	System.config({
-	    		baseUrl: '/',
-	    		defaultJSExtensions: true,
-	    		packages: {
-	    			app: {
-	    				defaultExtension: 'js'
-	    			}
-	    		},
-	    		map: {
-	    			'angular2':'node_modules/angular2',
-	    			'primeng':'node_modules/primeng',
-	    			'ng2-charts':'node_modules/ng2-charts',
-	    			'moment':'node_modules/moment'
-	    		}
-	    	});
-	    	System.import('app/bootstrap')
-	    		  .then(null, console.error.bind(console));
+	    	System.import('app').catch(function(err){console.error(err);});
 	    </script>
-	    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-	    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+	    <!-- <script src="node_modules/rxjs/bundles/Rx.js"></script> -->
+	    <!-- <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 	    <script src="node_modules/angular2/bundles/router.dev.js"></script>
-	    <script src="node_modules/angular2/bundles/http.dev.js"></script>
-	    
+	    <script src="node_modules/angular2/bundles/http.dev.js"></script> -->
 	</head>
-
 	<!-- Display App -->
 	<body>
 		<app>Loading...</app>
