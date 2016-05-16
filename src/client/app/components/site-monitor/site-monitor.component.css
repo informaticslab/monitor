@@ -14,9 +14,12 @@
   color:#FFF;
 }
 
-.widget-warning {
-  background: #FF9100;
-  color:white;
+.widget-warn {
+  background-image:
+      linear-gradient(
+        #FFD54F, #FFC107
+      );
+  color:#000;
 }
 
 .center {
