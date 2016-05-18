@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
-import {Router} from '@angular/router-deprecated';
+import {Router, RouteConfig} from '@angular/router-deprecated';
+import {HomeComponent} from '../home/home.component';
 
 @Component({
 	selector: 'login',
 	templateUrl: './app/components/login/login.component.html',
 	styleUrls: ['./app/components/login/login.component.css']
 })
+
 
 export class LoginComponent {
 	constructor(private _router: Router) { }
@@ -16,3 +18,4 @@ export class LoginComponent {
 		this._router.navigate(['Signup']);
 	}
 }
+

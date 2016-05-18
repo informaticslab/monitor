@@ -7,8 +7,8 @@ import {HTTP_PROVIDERS} from '@angular/http';
 // import {WeatherReport, WeatherService} from '../../services/weather.service';
 // import {JiraReservations, JiraService} from '../../services/jira.service';
 // import {SensorData, ServerSensorService} from '../../services/server-sensor.service';
-// import {HomeComponent} from '../home/home.component';
-import {LoginComponent} from '../login/login.component';
+import {HomeComponent} from '../home/home.component';
+// import {LoginComponent} from '../login/login.component';
 
 
 @Component({
@@ -29,8 +29,8 @@ import {LoginComponent} from '../login/login.component';
 })
 
 @RouteConfig([
-	{path: '/login', component: LoginComponent, as: 'Login', useAsDefault:true},
-	// {path: '/home/...', component: HomeComponent, as: 'Home'},
+	// {path: '/login', component: LoginComponent, as: 'Login', useAsDefault:true},
+	{path: '/home/...', component: HomeComponent, as: 'Home', useAsDefault: true}
 ])
 
 export class AppComponent {}

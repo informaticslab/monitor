@@ -2,6 +2,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {TopnavComponent} from '../topnav/topnav.component';
 import {DashboardComponent} from '../dashboard/dashboard.component';
+import {LoginComponent} from '../login/login.component';
 
 @Component({
 	selector: 'home',
@@ -9,7 +10,8 @@ import {DashboardComponent} from '../dashboard/dashboard.component';
 	directives: [ROUTER_DIRECTIVES, TopnavComponent]
 })
 @RouteConfig([
-	{path: '/', component:DashboardComponent, as: 'Dashboard', useAsDefault:true}
+	{path: '/', component:DashboardComponent, as: 'Dashboard', useAsDefault:true},
+	{path: '/login', component:LoginComponent, as: 'Login'}
 ])
 
 export class HomeComponent {
