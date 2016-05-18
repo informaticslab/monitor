@@ -13,7 +13,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor='#reservation of jiraReservations'>
+          <tr *ngFor='let reservation of jiraReservations'>
             <td>{{reservation.key}}</td>
             <td>{{reservation.summary}}</td>
             <td>{{reservation.reservedDate | date:'short'}}</td>

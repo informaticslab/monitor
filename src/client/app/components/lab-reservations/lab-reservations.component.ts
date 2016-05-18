@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {JiraReservations, JiraService} from '../../services/jira.service';
 
 @Component({

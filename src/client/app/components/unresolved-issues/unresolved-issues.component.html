@@ -14,7 +14,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor='#unresolved of unresolvedList'>
+          <tr *ngFor='let unresolved of unresolvedList'>
             <td>{{unresolved.key}}</td>
             <td>{{unresolved.summary}}</td>
             <td>{{unresolved.assignee}}</td>

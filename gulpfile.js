@@ -3,6 +3,8 @@ var config = require('./gulp.config')(),
 	tscConfig = require('./tsconfig'),
 	port = process.env.PORT || config.defaultPort;
 
+var tsProject = $.typescript.createProject('./tsconfig.json');
+
 var gulp = require('gulp'),
 	args = require('yargs').argv,
 	del = require('del');
@@ -54,12 +56,17 @@ gulp.task('run-server-dev', function() {
 
 // Typescript compile
 gulp.task('compile', ['clean'], function() {
-	return gulp
+	// return gulp
+	// 	.src(config.allts)
+	// 	.pipe($.sourcemaps.init())
+	// 	.pipe($.typescript(tscConfig.compilerOptions))
+	// 	.pipe($.sourcemaps.write('.'))
+	// 	.pipe(gulp.dest('dist/client/app'));
+	var tsResult = tsProject
 		.src(config.allts)
-		.pipe($.sourcemaps.init())
-		.pipe($.typescript(tscConfig.compilerOptions))
-		.pipe($.sourcemaps.write('.'))
-		.pipe(gulp.dest('dist/client/app'));
+		.pipe($.typescript(tsProject));
+
+	return tsResult.js.pipe(gulp.dest('dist/client/app'));
 });
 
 // Copy typings
