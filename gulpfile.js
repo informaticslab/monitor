@@ -1,6 +1,6 @@
 var $ = require('gulp-load-plugins')({lazy: true});
 var config = require('./gulp.config')(),
-	tscConfig = require('./src/client/tsconfig'),
+	tscConfig = require('./tsconfig'),
 	port = process.env.PORT || config.defaultPort;
 
 var gulp = require('gulp'),
