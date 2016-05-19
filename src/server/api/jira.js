@@ -129,7 +129,6 @@ module.exports.getRoutes = function() {
 		
 	});
 
-
 	router.get('/issues', function(req, res) {
 		var completedCountQuery = 'http://jira.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20%3D%20Complete';
 		var unresolvedCountQuery = 'http://jira.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20is%20EMPTY';
@@ -188,6 +187,7 @@ module.exports.getRoutes = function() {
 						unresolvedArray.push(composedObj);
 					}
 				}
+				unresolvedArray = _.orderBy(unresolvedArray, ['key'], ['asc']);
 				res.send(unresolvedArray);
 			} else {
 				console.log(error);
@@ -195,32 +195,6 @@ module.exports.getRoutes = function() {
 			}
 		});
 	});
-
-	// router.get('/unresolvedIssues', function(req, res) {
-	// 	var unresolvedCountQuery = 'http://jira.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20is%20EMPTY';
-
-	// 	request(unresolvedCountQuery, auth, function(error, response, body){
-	// 		if (!error && response.statusCode === 200){
-	// 			var parsedObj =JSON.parse(body);
-	// 			return res.send(parsedObj);
-	// 		} else {
-	// 			console.log(error);
-	// 		}
-	// 	});
-	// });
-
-	// router.get('/canceledIssues', function(req, res) {
-	// 	var canceledCountQuery = 'http://jira.phiresearchlab.org/rest/api/2/search?jql=project%20%3D%2011900%20AND%20resolution%20%3D%20Canceled';
-
-	// 	request(canceledCountQuery, auth, function(error, response, body){
-	// 		if (!error && response.statusCode === 200){
-	// 			var parsedObj =JSON.parse(body);
-	// 			return res.send(parsedObj);
-	// 		} else {
-	// 			console.log(error);
-	// 		}
-	// 	});
-	// });
 
 
 	return router;

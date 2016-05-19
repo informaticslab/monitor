@@ -43,10 +43,9 @@ export class DashboardComponent {
 			var minutes = time.getMinutes();
 			var s = time.getSeconds();
 
-			var ampm = hours <= 11 ? 'am' : 'pm';
+			var ampm = hours <= 11 ? ' AM' : ' PM';
 			var strTime = [hours % 12,
-				(minutes < 10 ? "0" + minutes : minutes),
-				(s < 10 ? "0" + s : s)
+				(minutes < 10 ? "0" + minutes : minutes)
 			].join(':') + ampm;
 
 			this.currentTime = strTime;
