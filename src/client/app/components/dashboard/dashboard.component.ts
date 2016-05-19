@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
-// import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
+import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 import {LabReservationComponent} from '../lab-reservations/lab-reservations.component';
 import {WeatherComponent} from '../weather/weather.component';
 import {SiteMonitorComponent} from '../site-monitor/site-monitor.component';
-// import {IssueMetricsComponent} from '../issue-metrics/issue-metrics.component';
+import {IssueMetricsComponent} from '../issue-metrics/issue-metrics.component';
 import {ServerSensorComponent} from '../server-sensor/server-sensor.component';
 import {UnresolvedIssuesComponent} from '../unresolved-issues/unresolved-issues.component';
 // import moment from 'moment/moment';
@@ -14,11 +14,11 @@ import {UnresolvedIssuesComponent} from '../unresolved-issues/unresolved-issues.
 	templateUrl: './app/components/dashboard/dashboard.component.html',
 	styleUrls: ['./app/components/dashboard/dashboard.component.css'],
 	directives: [
-		// CHART_DIRECTIVES, 
+		CHART_DIRECTIVES, 
 		WeatherComponent, 
 		SiteMonitorComponent,
 		LabReservationComponent,
-		// IssueMetricsComponent,
+		IssueMetricsComponent,
 		ServerSensorComponent,
 		UnresolvedIssuesComponent
 	]
