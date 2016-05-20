@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Rx';
 export class WeatherReport {
 	constructor(
 		public response: JSON,
-		public current_observation: JSON
+		public current_observation: any
 	) {}
 }
 

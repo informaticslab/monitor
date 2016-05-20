@@ -34,7 +34,17 @@ export class IssueMetricsComponent {
 
 	private doughnutChartLabels:string[] = ['Completed', 'Unresolved', 'Canceled'];
 	private doughnutChartType:string = 'doughnut';
-	// private doughnutChartLegend:boolean = false;
+	private doughnutChartLegend:boolean = true;
+	private options:any = { 
+		legend:{
+			labels:{
+				fontColor: '#FFF'
+			},
+			position: 'bottom'
+		},
+		responsive: true
+	};
+	// private colors: Array<any> = [{ fillColor: '#8EB021' }, { fillColor: '#3B7FC4' }, { fillColor: '#D04437' }];
 	
 
 	getIssuesMetrics() {

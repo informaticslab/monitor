@@ -15,7 +15,7 @@
   </div>
   <div class='col-md-4'>   
     <div>
-      <!-- <weather-widget></weather-widget> -->
+      <weather-widget></weather-widget>
     </div>
   </div>
     <div class='col-md-4'>
@@ -28,7 +28,14 @@
 
 <div class='row'>
   <div class='col-md-8'>
-    <site-monitor></site-monitor>
+    <div class='row'>
+      <div>
+        <site-monitor></site-monitor>
+      </div>
+    </div>
+    <div class='row'>
+      
+    </div>
   </div>
   <div class='col-md-4'>
     <div class='row'>
@@ -41,33 +48,13 @@
         <lab-reservations></lab-reservations>
       </div>  
     </div>
-  </div>
-</div>
-
-
-<div class='row'>
-	<div class='col-md-8'>
-		<div class='widget'>
-      <div class='widget-header'>
-        www.phiresearchlab.org Metrics (mocked data)
-      </div>
-			<!-- <div class='widget-body medium-adjust'>
-				 <base-chart class='chart' 
-                [data]='lineChartData'
-                [labels]='lineChartLabels'
-                [options]="lineChartOptions"
-                [colours]="lineChartColours"
-                [chartType]="lineChartType"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></base-chart>
-			</div> -->
-	</div>
-  </div>
-  <div class='col-md-4'>
-    <div>
+    <div class='row'>
+      <div>
         <unresolved-issues></unresolved-issues>
+      </div>
     </div>
   </div>
 </div>
+
 
 

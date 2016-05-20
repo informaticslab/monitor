@@ -23,7 +23,7 @@ export class WeatherComponent {
 	ngAfterContentInit() {
 		setInterval(() => {
 			this.getCurrentWeather();
-		}, 90000);
+		}, 900000);
 	}
 
 	getCurrentWeather() {

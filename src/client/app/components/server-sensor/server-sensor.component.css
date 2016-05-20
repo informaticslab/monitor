@@ -15,8 +15,13 @@
 }
 
 .title {
+	font-size: 2em;
 	margin-top: 2px;
 	margin-bottom: 2px;
+}
+
+.temp {
+	font-size: 2.5em;
 }
 
 .content {
