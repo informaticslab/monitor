@@ -29,7 +29,7 @@ export class WeatherComponent {
 	getCurrentWeather() {
 		this._weatherService.getCurrentConditions()
 			.subscribe(
-			weather => this.weatherReport = weather,
+			weather => this.weatherReport = weather,       
 			error => this.errorMessage = <any>error
 			);
 	}
