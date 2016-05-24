@@ -33,9 +33,9 @@ export class ServerSensorComponent {
 	}
 
 	setStyle() {
-		if (this.sensorData.temperature <= 80) {
+		if (this.sensorData.temperature < 80) {
 			return '#009688';
-		} else if (this.sensorData.temperature >= 81 && this.sensorData.temperature < 85) {
+		} else if (this.sensorData.temperature >= 80 && this.sensorData.temperature < 85) {
 			return '#EF6C00';
 		} else {
 			return '#C62828';
