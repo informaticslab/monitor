@@ -1,7 +1,8 @@
 var $ = require('gulp-load-plugins')({lazy: true});
 var config = require('./gulp.config')(),
 	tscConfig = require('./tsconfig'),
-	port = process.env.PORT || config.defaultPort;
+	port = process.env.PORT || config.defaultPort,
+	Builder = require('systemjs-builder');
 
 var tsProject = $.typescript.createProject('./tsconfig.json');
 
@@ -9,6 +10,7 @@ var gulp = require('gulp'),
 	args = require('yargs').argv,
 	del = require('del');
 
+var appProd = 'dist/client/app';
 
 // clean contents of the dist folder
 gulp.task('clean', function () {
@@ -67,6 +69,21 @@ gulp.task('compile', ['clean'], function() {
 		.pipe($.typescript(tsProject));
 
 	return tsResult.js.pipe(gulp.dest('dist/client/app'));
+});
+
+// Bundle files
+gulp.task('bundle',function() {
+	var builder = new Builder('', 'src/client/systemjs.config.js');
+
+	return builder
+		.buildStatic(appProd +'/bootstrap.js', appProd + '/bundle.js', {minify: true, sourceMaps: true})
+		.then(function() {
+			console.log('Build complete');
+		})
+		.catch(function(err) {
+			console.log('Build error');
+			console.log(err);
+		});
 });
 
 // Copy typings
