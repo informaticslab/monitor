@@ -122,6 +122,7 @@ gulp.task('copy:monitor', ['clean'], function() {
 // });
 
 gulp.task('build', ['compile', 'copy:assets', 'copy:server', 'copy:monitor']);
+// gulp.task('devbuild', ['build', 'bundle']);
 gulp.task('run-sauron',['build', 'run-server-dev']);
 
 
