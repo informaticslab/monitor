@@ -22,7 +22,7 @@ export class ServerSensorComponent {
 	ngAfterContentInit() {
 		setInterval(() => {
 			this.getServerSensorData();
-		}, 60000);
+		}, 300000);
 	}
 
 	getServerSensorData() {
