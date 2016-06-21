@@ -44,7 +44,7 @@ export class DashboardComponent {
 			var s = time.getSeconds();
 
 			var ampm = hours <= 11 ? ' AM' : ' PM';
-			var strTime = [hours % 12,
+			var strTime = [(hours === 12 ? "12": hours % 12),
 				(minutes < 10 ? "0" + minutes : minutes)
 			].join(':') + ampm;
 
