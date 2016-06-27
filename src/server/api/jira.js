@@ -9,7 +9,7 @@ module.exports.getRoutes = function() {
 	var auth = {
 			'auth': {
 				'user':'tami',
-				'pass':'Overwatch.1'
+				'pass':'Gunpla.1'
 				}
 			};
 
