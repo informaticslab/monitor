@@ -9,7 +9,8 @@ var express = require('express'),
 	reportsApi = require('./api/reports'),
 	jiraApi = require('./api/jira'),
 	sensorApi = require('./api/sensor'),
-	http = require('http');
+	http = require('http'),
+	nodemailer = require('nodemailer');
 
 var store = storeFactory.getStorageInstance('development');
 if (!store) {
@@ -25,6 +26,36 @@ app.use('/bower_components', express.static(path.resolve(__dirname, '../../', 'b
 function serveIndex(req, res) {
 	res.sendFile(path.resolve(__dirname, '../client/index.html'));
 }
+
+//nodemailer testing
+var smtpConfig = {
+	host: 'smtp.gmail.com',
+	port: 465,
+	secure: true,
+	auth: {
+		user: 'technical.ta@gmail.com',
+		pass: 'BaseG0d!'
+	}
+};
+
+var transporter = nodemailer.createTransport(smtpConfig);
+
+var mailOptions = {
+	from: '"Kiet Ta" <technical.ta@gmail.com>', //sender
+	to: 'kta@deloitte.com', //recepients 
+	subject: 'Hello',
+	text: 'Hello world',
+	html: '<b>Hello world</b>'
+};
+
+app.use('/sendmail', function() {
+	transporter.sendMail(mailOptions, function(error, infor) {
+		if(error) {
+			return console.log(error);
+		} 
+		console.log('Message sent: ' + info.response);
+	});
+});
 
 
 
