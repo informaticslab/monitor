@@ -25,6 +25,7 @@ export class ServerSensorService {
 
 	private extractData(res: Response) {
 		if (res.status < 200 || res.status >= 300) {
+			console.log(res);
 			throw new Error('Bad response status: ' + res.status);
 		}
 		var body = res.json();
