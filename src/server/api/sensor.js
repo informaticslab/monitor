@@ -6,7 +6,7 @@ module.exports.getRoutes = function() {
 	var router = express.Router();
 
 	router.get('/data', function(req, res){
-		var url ='http://96.80.37.110:3000/sensorData';
+		var url ='http://12.96.10.100:3000';
 
 		request(url, function(error, response, body) {
 			if(!error && response.statusCode === 200) {
