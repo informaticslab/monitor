@@ -225,8 +225,44 @@ var seedServices = [
 			host: 'IIU',
 			startMonitorTime: startMonitorTime
 		}
-
 ];
+
+
+var newServices = [
+	{
+			name: 'Anubis Test',
+			interval: 60 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://anubistest.phiresearchlab.org/',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 6000,
+			host: 'IIU',
+			startMonitorTime: startMonitorTime
+		},
+		{
+			name: 'CDC Info Dev',
+			interval: 60 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://cdcinfodev.phiresearchlab.org/',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 6000,
+			host: 'IIU',
+			startMonitorTime: startMonitorTime
+		},
+		{
+			name: 'CDC Info Test',
+			interval: 60 * 1000,
+			failureInterval: 20 * 1000,
+			url: 'http://cdcinfotest.phiresearchlab.org/',
+			port:'80',
+			timeout: 10000,
+			warningThreshold: 6000,
+			host: 'IIU',
+			startMonitorTime: startMonitorTime
+		}
+		];
 
 commander
 	.option('-e, --env [env]', 'Storage environment key', process.env.NODE_ENV || 'development')
@@ -250,6 +286,16 @@ redisStore.getServices({}, function(err, services) {
 		for(var i = 0; i < seedServices.length; i++) {
 			redisStore.addService(seedServices[i], function(err, id){
 				if(err){
+					console.log(err);
+				}
+			});
+		}
+	}
+
+	if(services.length === 19) {
+		for(var j = 0; j < newServices.length; j++) {
+			redisStore.addService(newServices[j], function(err, id) {
+				if(err) {
 					console.log(err);
 				}
 			});
