@@ -8,6 +8,7 @@ import {WeatherReport, WeatherService} from '../../services/weather.service';
 import {JiraReservations, JiraService} from '../../services/jira.service';
 import {SensorData, ServerSensorService} from '../../services/server-sensor.service';
 import {HomeComponent} from '../home/home.component';
+import {AdminComponent} from '../admin/admin.component';
 // import {LoginComponent} from '../login/login.component';
 
 
@@ -30,7 +31,8 @@ import {HomeComponent} from '../home/home.component';
 
 @RouteConfig([
 	// {path: '/login', component: LoginComponent, as: 'Login', useAsDefault:true},
-	{path: '/home/...', component: HomeComponent, as: 'Home', useAsDefault: true}
+	{path: '/home/...', component: HomeComponent, as: 'Home', useAsDefault: true},
+	{path: '/admin', component: AdminComponent, as: 'Admin'}
 ])
 
 export class AppComponent {}

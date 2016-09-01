@@ -6,6 +6,7 @@ import {SiteMonitorComponent} from '../site-monitor/site-monitor.component';
 import {IssueMetricsComponent} from '../issue-metrics/issue-metrics.component';
 import {ServerSensorComponent} from '../server-sensor/server-sensor.component';
 import {UnresolvedIssuesComponent} from '../unresolved-issues/unresolved-issues.component';
+import {AdminComponent} from '../admin/admin.component';
 // import moment from 'moment/moment';
 
 
@@ -20,7 +21,8 @@ import {UnresolvedIssuesComponent} from '../unresolved-issues/unresolved-issues.
 		LabReservationComponent,
 		IssueMetricsComponent,
 		ServerSensorComponent,
-		UnresolvedIssuesComponent
+		UnresolvedIssuesComponent,
+		AdminComponent
 	]
 })
 
