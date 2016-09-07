@@ -31,8 +31,7 @@ import {AdminComponent} from '../admin/admin.component';
 
 @RouteConfig([
 	// {path: '/login', component: LoginComponent, as: 'Login', useAsDefault:true},
-	{path: '/home/...', component: HomeComponent, as: 'Home', useAsDefault: true},
-	{path: '/admin', component: AdminComponent, as: 'Admin'}
+	{path: '/home/...', component: HomeComponent, as: 'Home', useAsDefault: true}
 ])
 
 export class AppComponent {}

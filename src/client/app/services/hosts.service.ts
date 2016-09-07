@@ -30,17 +30,21 @@ export class MonitorService {
 			.catch(this.handleError);
 	}
 
+	deleteService(serviceId) {
+		//TODO
+	}
+
 	getServices(){
 		return this._http.get('/api/services')
 			.map((response: Response) => <Service[]>response.json())
-			.do(Response => console.log(Response))
+			// .do(Response => console.log(Response))
 			.catch(this.handleError);
 	}
 
 	getServicesById(id){
 		return this._http.get('/api/services/:id', id)
 			.map((response: Response) => <Service[]>response.json())
-			.do(Response => console.log(Response))
+			// .do(Response => console.log(Response))
 			.catch(this.handleError);
 	}
 

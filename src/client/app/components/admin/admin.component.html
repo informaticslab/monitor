@@ -1,8 +1,12 @@
-l<div>
-  <div class="row">
-    Admin Panel
+<div class='row'>
+  <div class='row pull-right'>
+      <button><a [routerLink]="['AddService']">Add Service</a></button>
   </div>
-  <div *ngFor='let service of services'>
-    <p>{{service.name}}</p>
+  <div class='col-md-12'>
+    <!-- <service-list></service-list> -->
+    <router-outlet></router-outlet>
   </div>
 </div>
+
+
+

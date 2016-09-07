@@ -1,5 +1,29 @@
-<ul>
-	<li *ngFor="let service of services">
-		{{service.name}} 
-	</li>
-</ul>
+<div class='widget'>
+  <div class='widget-header'>
+    Active Services
+  </div>
+  <div class='widget-body medium-adjust overflow-adjust'>
+    <div class='table-responsive'>
+      <table class='table'>
+        <thead >
+          <tr class='t-head'>
+            <th>Name</th>
+            <th>Host</th>
+            <th>URL</th>
+            <th>Remove Service</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let service of services'>
+            <td>{{service.name}}</td>
+            <td>{{service.host}}</td>
+            <td>{{service.url}}</td>
+            <td>
+              <button>Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>    
+    </div>
+  </div>
+</div>

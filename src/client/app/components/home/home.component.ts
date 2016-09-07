@@ -3,6 +3,7 @@ import {RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {TopnavComponent} from '../topnav/topnav.component';
 import {DashboardComponent} from '../dashboard/dashboard.component';
 import {LoginComponent} from '../login/login.component';
+import {AdminComponent} from '../admin/admin.component';
 
 @Component({
 	selector: 'home',
@@ -11,6 +12,7 @@ import {LoginComponent} from '../login/login.component';
 })
 @RouteConfig([
 	{path: '/', component:DashboardComponent, as: 'Dashboard', useAsDefault:true},
+	{path: '/admin/...', component: AdminComponent, as: 'Admin'},
 	{path: '/login', component:LoginComponent, as: 'Login'}
 ])
 
