@@ -18,6 +18,7 @@ if (!store) {
 }
 var app = express(store);
 var port = process.env.PORT || 3000;
+var httpsPort = process.env.HTTPSPORT || 4400;
 
 app.use('/app', express.static(path.resolve(__dirname, '../', 'client/app')));
 app.use('/assets', express.static(path.resolve(__dirname, '../', 'client/assets')));
@@ -66,9 +67,37 @@ app.use('/api/report', reportsApi.getRoutes(store));
 app.use('/api', servicesApi.getRoutes(store));
 app.get('/*', serveIndex);
 
+var properties = require('./envProperties');
+console.log('the properties file says useSSL is ' + properties.USESSL);
+if(properties.USESSL == 'false')
+{
 app.listen(port, function() {
 	console.log('Gulp is running this app on: ' + port);
 });
+}
+else if (properties.USESSL == 'true')
+{
+var https = require('https'),      // module for https
+    fs =    require('fs');         // required to read certs and keys
+	var options = {
+    key:    fs.readFileSync(properties.SSL_KEY),
+    cert:   fs.readFileSync(properties.SSL_CERT),
+    ca:     fs.readFileSync(properties.SSL_BUNDLE),
+    requestCert:        false,
+    rejectUnauthorized: false,
+};
+https.createServer(options, app).listen(httpsPort);
+console.log('HTTPS Express server listening on port ' + httpsPort); 
+
+
+var http = require('http');
+http.createServer(function (req, res) {
+    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+    //res.writeHead(301, { "Location": "https://localhost:4400" });
+    res.end();
+}).listen(port);
+
+}
 
 module.exports = app;
 
