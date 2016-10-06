@@ -224,12 +224,8 @@ var seedServices = [
 			warningThreshold: 6000,
 			host: 'IIU',
 			startMonitorTime: startMonitorTime
-		}
-];
-
-
-var newServices = [
-	{
+		},
+		{
 			name: 'Anubis Test',
 			interval: 60 * 1000,
 			failureInterval: 20 * 1000,
@@ -239,7 +235,11 @@ var newServices = [
 			warningThreshold: 6000,
 			host: 'IIU',
 			startMonitorTime: startMonitorTime
-		},
+		}
+];
+
+
+var newServices = [
 		{
 			name: 'CDC Info Dev',
 			interval: 60 * 1000,
