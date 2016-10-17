@@ -160,17 +160,6 @@ var seedServices = [
 			startMonitorTime: startMonitorTime
 		},
 		{
-			name: 'CRA',
-			interval: 60 * 1000,
-			failureInterval: 20 * 1000,
-			url: 'http://cra.phiresearchlab.org/cra',
-			port:'80',
-			timeout: 10000,
-			warningThreshold: 6000,
-			host: 'IIU',
-			startMonitorTime: startMonitorTime
-		}, 
-		{
 			name: 'NHSN',
 			interval: 60 * 1000,
 			failureInterval: 20 * 1000,
@@ -201,28 +190,6 @@ var seedServices = [
 			timeout: 10000,
 			warningThreshold: 6000,
 			host:'IIU',
-			startMonitorTime: startMonitorTime
-		},
-		{
-			name: 'DHIS2',
-			interval: 60 * 1000,
-			failureInterval: 20 * 1000,
-			url: 'http://dhis2.phiresearchlab.org/dhis',
-			port:'80',
-			timeout: 10000,
-			warningThreshold: 6000,
-			host:'IIU',
-			startMonitorTime: startMonitorTime
-		},
-		{
-			name: 'Open MRS',
-			interval: 60 * 1000,
-			failureInterval: 20 * 1000,
-			url: 'http://openmrs.phiresearchlab.org/openmrs',
-			port:'80',
-			timeout: 10000,
-			warningThreshold: 6000,
-			host: 'IIU',
 			startMonitorTime: startMonitorTime
 		},
 		{
@@ -264,6 +231,10 @@ var newServices = [
 		}
 		];
 
+	var removeServices = [
+		'SJ-gLViQVA','BJxlIEiX4R','rk2IViXVA'
+	];
+
 commander
 	.option('-e, --env [env]', 'Storage environment key', process.env.NODE_ENV || 'development')
 	.option('-d, --max-initial-delay [value]', 'Initial random delay max bound', 10000)
@@ -292,7 +263,7 @@ redisStore.getServices({}, function(err, services) {
 		}
 	}
 
-	if(services.length === 19) {
+	if(services.length === 20) {
 		for(var j = 0; j < newServices.length; j++) {
 			redisStore.addService(newServices[j], function(err, id) {
 				if(err) {
@@ -300,7 +271,18 @@ redisStore.getServices({}, function(err, services) {
 				}
 			});
 		}
+		for(var j = 0; j < removeServices.length; j++) {
+			redisStore.deleteService(removeServices[j], function(err, id) {
+				if(err) {
+					console.log(err);
+				}
+			});
+		}
 	}
+
+
+	// console.log(services);
+
 
 	var monitor = new MonitorFactory(services, redisStore); 
 
